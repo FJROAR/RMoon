@@ -1,11 +1,20 @@
 Package: RMoon
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Title: Algorithms used to predict Moon behavior
+Version: 0.0.1
+Authors@R: c(
+    person("Francisco Jesús", "Rodríguez Aragón", email = "tbfjroar@gmail.com", role = "cre"))
+Description: This package allows the computation of basic element related to our natural satellite: the Moon
+    It permits from basic data such as a date - hour - minute, predict where will be the moon, which part of
+    the moon will be illuminated, etc
+License: GPL-3
+URL: https://github.com/FJROAR/RMoon
+Depends:
+    R(>= 4.0.0)
+Imports:
+    dplyr (>= 1.0.0),
+    data.table (>= 1.0.0)
 Encoding: UTF-8
+Language: en-US
 LazyData: true
+RoxygenNote: 7.2.2
