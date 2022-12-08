@@ -1,4 +1,4 @@
-#' @title earthVSOP87
+#' @title EarthVSOP87
 #'
 #' @description The Planetary solutions VSOP87 (Variations Seculaires des Orbites Planetaires)
 #' are analytical solutions of the motion of the planets in different versions. The main version
@@ -13,11 +13,11 @@
 #'
 #' @references VI/81 Planetary Solutions VSOP87 (Bretagnon+, 1988)
 #'
-#' @keywords dataset VSOP87 Earth
+#' @keywords dataset
 #'
 #' @examples
 #'
 #' library(RMoon)
-#' df = earthVSOP87
+#' df = EarthVSOP87
 #'
-"earthVSOP87"
+"EarthVSOP87"

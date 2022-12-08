@@ -1,6 +1,6 @@
-#' @title LongEarth
+#' @title MeanOrbitLongEarth
 #'
-#' @description Estimation of the mean longitude of Earth according to the VSOP87 theory
+#' @description Estimation of the mean longitude of Earth's orbit according to the VSOP87 theory
 #'
 #' @param julianmil Numerical vector which represents a Julian converted in millenium
 #'
@@ -17,11 +17,9 @@
 #'
 #' @export
 
+MeanOrbitLongEarth <- function(julianmil){
 
-LongEarth <- function(julianmil){
-
-  #load("data/earthVSOP87.rda")
-  df = earthVSOP87
+  df = EarthVSOP87
 
   df$A <- as.numeric(gsub(",", ".", df$A0))*10^9
   df$B <- as.numeric(gsub(",", ".", df$B))
