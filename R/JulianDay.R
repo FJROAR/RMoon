@@ -7,9 +7,11 @@
 #' reference of one or several days in UTM time
 #'
 #' @return List of 3 vectors containing the following elements:
-#' the Julian time, the Julian day (epoch J2000.0) and the Julian century
+#' the Julian time, the Julian day (epoch J2000.0), the Julian century and the Julian Millenium
 #'
 #' @examples
+#'
+#' library(RMoon)
 #' jlData<- SunRightAscention01(year = 1992, month = 4, day = 12, hour = 0, minute = 0)
 #'
 #' @references
@@ -29,7 +31,8 @@ JulianDay <- function(year, month, day, hour, minute){
   jd_ <- dj2000 + 2451545
 
   t <- dj2000 / 36525
+  tmil = (jd_ - 2451545) / 365250
 
-  return(list(dj2000, jd_, t))
+  return(list(dj2000, jd_, t, tmil))
 
 }

@@ -21,7 +21,9 @@ Provides the Right Ascension of the Sun in the version low
 accuracy according to Chapter 24 of Astronomical Algorithms
 }
 \examples{
+
 #epsilon and lambda were computed at 12.04.1992, 00h 00m
+library(RMoon)
 Suncoord<- SunRightAscension01(epsilon = 23.440491532, lambda = 22.33957501)
 
 }

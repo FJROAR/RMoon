@@ -12,13 +12,15 @@ reference of one or several days in UTM time}
 }
 \value{
 List of 3 vectors containing the following elements:
-the Julian time, the Julian day (epoch J2000.0) and the Julian century
+the Julian time, the Julian day (epoch J2000.0), the Julian century and the Julian Millenium
 }
 \description{
 Provides the Julian Day using 5 parameter from year up to minutes
 (seconds can be considered using decimal in the last parameter)
 }
 \examples{
+
+library(RMoon)
 jlData<- SunRightAscention01(year = 1992, month = 4, day = 12, hour = 0, minute = 0)
 
 }
