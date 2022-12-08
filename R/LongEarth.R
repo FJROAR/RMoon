@@ -18,10 +18,10 @@
 #' @export
 
 
-LongEarth <- function(julianmil, df = earthVSOP87){
+LongEarth <- function(julianmil){
 
   #load("data/earthVSOP87.rda")
-  #df = earthVSOP87
+  df = earthVSOP87
 
   df$A <- as.numeric(gsub(",", ".", df$A0))*10^9
   df$B <- as.numeric(gsub(",", ".", df$B))
