@@ -1,4 +1,4 @@
-#' @title MeanOrbitLongEarth
+#' @title OrbitMeanLongEarth
 #'
 #' @description Estimation of the mean longitude of Earth's orbit according to the VSOP87 theory
 #'
@@ -10,14 +10,14 @@
 #'
 #' #JulianMil is computed at 12.04.1992, 00h 00m
 #' library(RMoon)
-#' MeanLong<- LongEarth(julianmil = -0.0077221081451)
+#' MeanLong<- OrbitMeanLongEarth(julianmil = -0.0077221081451)
 #'
 #' @references
 #' Jean Meeus (1991), Astronomical Algorithms, ISBN 0-943396-35-2
 #'
 #' @export
 
-MeanOrbitLongEarth <- function(julianmil){
+OrbitMeanLongEarth <- function(julianmil){
 
   df = EarthVSOP87
 
