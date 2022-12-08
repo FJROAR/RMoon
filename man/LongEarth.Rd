@@ -4,7 +4,7 @@
 \alias{LongEarth}
 \title{LongEarth}
 \usage{
-LongEarth(julianmil)
+LongEarth(julianmil, df = earthVSOP87)
 }
 \arguments{
 \item{julianmil}{Numerical vector which represents a Julian converted in millenium}
