@@ -1,20 +1,19 @@
-#' @title SunRightAscention01
+#' @title SunRightAscension01
 #'
-#' @description Provides the Right Ascention of the Sun in the version low
-#' accurracy according to Chapter 24 of Astronomical Algorithms
+#' @description Provides the Right Ascension of the Sun in the version low
+#' accuracy according to Chapter 24 of Astronomical Algorithms
 #'
-#' @param epsilon Numerical vector which represents the eccentricty of the
+#' @param epsilon Numerical vector which represents the eccentricity of the
 #' Earth's orbit
-#' @param lambda Numerical vector which represents the apparent longitud of the Sun,
-#' referred to the true equinnox of the date
+#' @param lambda Numerical vector which represents the apparent longitude of the Sun,
+#' referred to the true equinox of the date
 #'
 #'
-#' @return Vector of Apparent Right Ascention of the Sun in Hour / Minutes /
-#' Seconds
+#' @return List of Hours, Minutes and Seconds of apparent right ascensions of the Sun
 #'
 #' @examples
 #' #epsilon and lambda were computed at 12.04.1992, 00h 00m
-#' Suncoord<- SunRightAscention01(epsilon = 23.440491532, lambda = 22.33957501)
+#' Suncoord<- SunRightAscension01(epsilon = 23.440491532, lambda = 22.33957501)
 #'
 #' @references
 #' Jean Meeus (1991), Astronomical Algorithms, ISBN 0-943396-35-2
@@ -22,7 +21,7 @@
 #' @export
 
 
-SunRightAscention01 <- function(epsilon, lambda){
+SunRightAscension01 <- function(epsilon, lambda){
 
   k = 3.141592654 / 180
 
@@ -53,6 +52,6 @@ SunRightAscention01 <- function(epsilon, lambda){
   }
 
 
-  return(c(alphaH, alfaM, alfaS))
+  return(list(alphaH, alfaM, alfaS))
 
 }
