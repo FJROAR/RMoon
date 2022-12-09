@@ -4,7 +4,7 @@
 #'
 #' @param julianmil Numerical vector which represents a Julian converted in millenium
 #'
-#' @return Mean longitud of the Earth in its orbit at that date
+#' @return Mean latitude of the Earth in its orbit at that date
 #'
 #' @examples
 #'

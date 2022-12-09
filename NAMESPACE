@@ -3,4 +3,5 @@
 export(JulianDay)
 export(OrbitMeanLatEarth)
 export(OrbitMeanLongEarth)
+export(SunRadioVectorEarth)
 export(SunRightAscension01)

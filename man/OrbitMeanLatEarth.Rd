@@ -10,7 +10,7 @@ OrbitMeanLatEarth(julianmil)
 \item{julianmil}{Numerical vector which represents a Julian converted in millenium}
 }
 \value{
-Mean longitud of the Earth in its orbit at that date
+Mean latitude of the Earth in its orbit at that date
 }
 \description{
 Estimation of the mean latitude of Earth's orbit according to the VSOP87 theory
