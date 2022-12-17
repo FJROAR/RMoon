@@ -1,7 +1,7 @@
 #' @title SunBasicElements
 #'
-#' @description Provides some basic elements of the Sun position required in othe
-#' functioin for computing the Sun Position according to Chapter 24 of Astronomical Algorithms
+#' @description Provides some basic elements of the Sun position required in other
+#' functios for computing the Sun Position according to Chapter 24 of Astronomical Algorithms
 #'
 #' @param juliancent Numerical vector which represents the Julian Day in centuries
 #' with sufficient number of decimals (recommended at least 9)
@@ -11,7 +11,6 @@
 #'
 #' @examples
 #'
-#' #epsilon and lambda were computed at 12.04.1992, 00h 00m
 #' library(RMoon)
 #' Sunbasics <- SunBasicElements(juliancent = -0.077221081451)
 #'

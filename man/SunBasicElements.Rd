@@ -15,12 +15,11 @@ List of Theta (Sun's true longitude), Omega (Sun's true geometric longitude),
 lambda (Sun's apparent longitude) and R (Sun's radiovector)
 }
 \description{
-Provides some basic elements of the Sun position required in othe
-functioin for computing the Sun Position according to Chapter 24 of Astronomical Algorithms
+Provides some basic elements of the Sun position required in other
+functios for computing the Sun Position according to Chapter 24 of Astronomical Algorithms
 }
 \examples{
 
-#epsilon and lambda were computed at 12.04.1992, 00h 00m
 library(RMoon)
 Sunbasics <- SunBasicElements(juliancent = -0.077221081451)
 
