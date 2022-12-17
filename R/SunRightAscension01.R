@@ -15,7 +15,7 @@
 #'
 #' #epsilon and lambda were computed at 12.04.1992, 00h 00m
 #' library(RMoon)
-#' Suncoord<- SunRightAscension01(epsilon = 23.440491532, lambda = 22.33957501)
+#' SuncoordAsc<- SunRightAscension01(epsilon = 23.440491532, lambda = 22.33957501)
 #'
 #' @references
 #' Jean Meeus (1991), Astronomical Algorithms, ISBN 0-943396-35-2
