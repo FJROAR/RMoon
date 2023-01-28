@@ -42,7 +42,7 @@ MoonGeoLongDist <- function(L, D, M, M_, F_, A1, A2, E){
   M_ <- M_ * 3.141592654 / 180
   F_ <- F_ * 3.141592654 / 180
   A1 <- A1 * 3.141592654 / 180
-  A2 <- A2 * 3.141592654 / 180
+  A2 <- A2 * 3.141592654 / 180.0
 
   df = PeriodicLongDist
 
