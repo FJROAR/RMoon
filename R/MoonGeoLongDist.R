@@ -76,6 +76,5 @@ MoonGeoLongDist <- function(L, D, M, M_, F_, A1, A2, E){
   distance <- 385000.56 + total_R / 1000
   pi <- asin(6378.14/distance) * 180 / 3.141592654
 
-  return (c(round(lambda, 4), distance, pi))
-
+  return (c(lambda, distance, pi))
 }
