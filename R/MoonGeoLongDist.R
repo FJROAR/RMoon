@@ -42,7 +42,7 @@ MoonGeoLongDist <- function(L, D, M, M_, F_, A1, A2, E){
   M_ <- M_ * 3.141592654 / 180
   F_ <- F_ * 3.141592654 / 180
   A1 <- A1 * 3.141592654 / 180
-  A2 <- A2 * 3.141592654 / 180.0
+  A2 <- A2 * 3.141592654 / 180
 
   df = PeriodicLongDist
 
@@ -72,7 +72,7 @@ MoonGeoLongDist <- function(L, D, M, M_, F_, A1, A2, E){
   total_L <- total_L_term + A1_m + L_F + A2_m
   total_R <- sum(df$R_term)
 
-  lambda <- arguments(T_)[1] + total_L/1000000
+  lambda <- L + total_L/1000000
   distance <- 385000.56 + total_R / 1000
   pi <- asin(6378.14/distance) * 180 / 3.141592654
 
