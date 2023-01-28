@@ -49,7 +49,7 @@ MoonGeoLongDist <- function(L, D, M, M_, F_, A1, A2, E){
   df$L_eccen <- ifelse(abs(df$M) == 1,
                        df$L_coeff * E,
                        ifelse(abs(df$M) == 2,
-                              df$L_coeff* E_2,
+                              df$L_coeff* E * E,
                               df$L_coeff))
 
   df$R_eccen <- ifelse(abs(df$M) == 1,
