@@ -44,7 +44,7 @@ MoonGeoLongDist <- function(L, D, M, M_, F_, A1, A2, E){
   A1 <- A1 * 3.141592654 / 180
   A2 <- A2 * 3.141592654 / 180
 
-  df <- fread("../data/base/seriesdat1.csv")
+  df = PeriodicLongDist
 
   df$L_eccen <- ifelse(abs(df$M) == 1,
                        df$L_coeff * E,
