@@ -66,7 +66,7 @@ MoonGeoLongDist <- function(L, D, M, M_, F_, A1, A2, E){
 
   total_L_term <- sum(df$L_term)
   A1_m <- 3958 * sin(A1)
-  L_F = 1962 * sin(L_ - F_)
+  L_F = 1962 * sin(L - F_)
   A2_m = 318 * sin(A2)
 
   total_L <- total_L_term + A1_m + L_F + A2_m
