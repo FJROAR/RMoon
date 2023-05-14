@@ -36,15 +36,15 @@ according to Chapter 45 of Astronomical Algorithms
 
 #epsilon and lambda were computed at 12.04.1992, 00h 00m
 library(RMoon)
-GeoLongDist<- MoonGeoLongDist(L  = 134.29018627,
-                              D  = 113.84230856,
-                              M  = 97.643513610,
-                              M_ = 5.1508393327,
-                              F_ = 219.88972622,
-                              A1 = 109.56847763,
-                              A3 = 229.53,
-                              E  = 1.0001942441
-                              E_2 = 1.0001942441**2)
+GeoLat<- MoonGeoLat(L  = 134.29018627,
+                    D  = 113.84230856,
+                    M  = 97.643513610,
+                    M_ = 5.1508393327,
+                    F_ = 219.88972622,
+                    A1 = 109.56847763,
+                    A3 = 229.53,
+                    E  = 1.0001942441
+                    E_2 = 1.0001942441**2)
 
 }
 \references{
