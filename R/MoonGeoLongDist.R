@@ -1,6 +1,6 @@
 #' @title MoonGeoLongDist
 #'
-#' @description Provides the Geocentric Longitud and distance of the Moon
+#' @description Provides the Geocentric Longitude and Distance of the Moon
 #' according to Chapter 45 of Astronomical Algorithms
 #'
 #' @param L Elemental parameter: Moon's mean longitude

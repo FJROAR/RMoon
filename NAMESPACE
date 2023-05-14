@@ -2,6 +2,7 @@
 
 export(JulianDay)
 export(MoonBasicElements)
+export(MoonGeoLat)
 export(MoonGeoLongDist)
 export(ObliqutiyEcliptic)
 export(OrbitMeanLatEarth)
