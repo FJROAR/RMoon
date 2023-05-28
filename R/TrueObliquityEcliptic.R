@@ -5,11 +5,11 @@
 #'
 #' @param julianCent Numerical vector which represents a Julian converted in millenium
 #'
-#' @return Epsilon (Obliquity of the Ecliptic), parameter needed for the Sun's Declination and Right Ascension
+#' @return Epsilon (Obliquity of the Ecliptic) in degrees, parameter needed for the Sun's Declination and Right Ascension
 #'
 #' @examples
 #'
-#' #JulianMil is computed at 12.04.1992, 00h 00m
+#' #juliancent is computed at 12.04.1992, 00h 00m
 #' library(RMoon)
 #' TrueObliquity <- TrueObliqutiyEcliptic(juliancent = -0.077221081451)
 #'

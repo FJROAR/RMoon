@@ -1,15 +1,15 @@
 #' @title NutationLong
 #'
-#' @description Estimation of the obliquity of ecliptic according to
+#' @description Estimation of the longitude of nutation according to
 #' Chapter 22 of Astronomical Algorithms (second edition)
 #'
 #' @param julianCent Numerical vector which represents a Julian converted in millenium
 #'
-#' @return varNutation (Nutation in longitude), parameter needed for the Moon's Declination and Right Ascension
+#' @return varNutation (Nutation in longitude) in degrees, parameter needed for the Moon's Declination and Right Ascension
 #'
 #' @examples
 #'
-#' #JulianMil is computed at 12.04.1992, 00h 00m
+#' #juliancent is computed at 12.04.1992, 00h 00m
 #' library(RMoon)
 #' varNutation <- NutationLong(juliancent = -0.077221081451)
 #'
@@ -69,7 +69,7 @@ NutationLong <- function(juliancent){
   df$NutObliq <- (df$Nut1 + df$Nut2 * juliancent) *
     0.0001 * sin(df$ArgNutObliq)
 
-  varNutation = sum(df$NutObliq)
+  varNutation = sum(df$NutObliq)/3600
 
   return(varNutation)
 }

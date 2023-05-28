@@ -10,7 +10,7 @@ TrueObliqutiyEcliptic(juliancent)
 \item{julianCent}{Numerical vector which represents a Julian converted in millenium}
 }
 \value{
-Epsilon (Obliquity of the Ecliptic), parameter needed for the Sun's Declination and Right Ascension
+Epsilon (Obliquity of the Ecliptic) in degrees, parameter needed for the Sun's Declination and Right Ascension
 }
 \description{
 Estimation of the obliquity of ecliptic according to
@@ -18,7 +18,7 @@ Chapter 22 of Astronomical Algorithms (second edition)
 }
 \examples{
 
-#JulianMil is computed at 12.04.1992, 00h 00m
+#juliancent is computed at 12.04.1992, 00h 00m
 library(RMoon)
 TrueObliquity <- TrueObliqutiyEcliptic(juliancent = -0.077221081451)
 

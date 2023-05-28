@@ -10,15 +10,15 @@ NutationLong(juliancent)
 \item{julianCent}{Numerical vector which represents a Julian converted in millenium}
 }
 \value{
-varNutation (Nutation in longitude), parameter needed for the Moon's Declination and Right Ascension
+varNutation (Nutation in longitude) in degrees, parameter needed for the Moon's Declination and Right Ascension
 }
 \description{
-Estimation of the obliquity of ecliptic according to
+Estimation of the longitude of nutation according to
 Chapter 22 of Astronomical Algorithms (second edition)
 }
 \examples{
 
-#JulianMil is computed at 12.04.1992, 00h 00m
+#juliancent is computed at 12.04.1992, 00h 00m
 library(RMoon)
 varNutation <- NutationLong(juliancent = -0.077221081451)
 
