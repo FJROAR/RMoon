@@ -20,9 +20,9 @@
 #'
 #'
 #' library(RMoon)
-#' ecuatorial <- Ecliptic2Ecuatorial(lambda = 133.167265,
-#'                                   beta = -3.2291226,
-#'                                   epsilon = 23.440636)
+#' ecuatorial <- Ecliptic2Ecuatorial(lambdaT = 133.167265,
+#'                                   betaT = -3.2291226,
+#'                                   eclipR = 23.440636)
 #'
 #' @references
 #' Jean Meeus (1991), Astronomical Algorithms, ISBN 0-943396-35-2
