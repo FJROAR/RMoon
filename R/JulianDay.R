@@ -33,6 +33,6 @@ JulianDay <- function(year, month, day, hour, minute, second){
   t <- dj2000 / 36525
   tmil = (jd_ - 2451545) / 365250
 
-  return(list(dj2000, jd_, t, tmil))
+  return(c(dj2000, jd_, t, tmil))
 
 }

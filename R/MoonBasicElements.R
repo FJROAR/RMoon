@@ -6,9 +6,12 @@
 #' @param juliancent Numerical vector which represents the Julian Day in centuries
 #' with sufficient number of decimals (recommended at least 9)
 #'
-#' @return List of L (Moon's mean longitude), D (Moon's mean elongation), M (Sun's mean anomaly)
-#' M_ (Moon's mean anomaly), F_ (Mean distance of the Moon from its ascending node),
-#' and additonal arguments used to correct sum formulas A1, A2, A3 and E
+#' @return Numeric vector with the following components:
+#'
+#' L (Moon's mean longitude), D (Moon's mean elongation), M (Sun's mean anomaly)
+#' M' (Moon's mean anomaly), F' (Mean distance of the Moon from its ascending node),
+#' and additonal arguments used to correct sum formulas A1, A2, A3 and E (additional
+#' adjustment)
 #'
 #' @examples
 #'
@@ -58,8 +61,7 @@ MoonBasicElements <- function(juliancent){
   A3 <- (313.45 + 481266.484 * juliancent) %% 360
 
   E <- 1 - 0.002516 * juliancent - 0.0000074 * juliancent^2
-  #E_2 <- E^2
 
-  return(list(L, D, M, M_, F_, A1, A2, A3, E))
+  return(c(L, D, M, M_, F_, A1, A2, A3, E))
 
 }

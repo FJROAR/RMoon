@@ -11,9 +11,12 @@ MoonBasicElements(juliancent)
 with sufficient number of decimals (recommended at least 9)}
 }
 \value{
-List of L (Moon's mean longitude), D (Moon's mean elongation), M (Sun's mean anomaly)
-M_ (Moon's mean anomaly), F_ (Mean distance of the Moon from its ascending node),
-and additonal arguments used to correct sum formulas A1, A2, A3 and E
+Numeric vector with the following components:
+
+L (Moon's mean longitude), D (Moon's mean elongation), M (Sun's mean anomaly)
+M' (Moon's mean anomaly), F' (Mean distance of the Moon from its ascending node),
+and additonal arguments used to correct sum formulas A1, A2, A3 and E (additional
+adjustment)
 }
 \description{
 Provides some basic elements of the Moon position required in other
