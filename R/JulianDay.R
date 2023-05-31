@@ -12,7 +12,7 @@
 #' @examples
 #'
 #' library(RMoon)
-#' jlData<- SunRightAscention01(year = 1992, month = 4, day = 12, hour = 0, minute = 0)
+#' jlData<- JulianDay(year = 1992, month = 4, day = 12, hour = 0, minute = 0, second = 0)
 #'
 #' @references
 #' Jean Meeus (1991), Astronomical Algorithms, ISBN 0-943396-35-2
@@ -20,13 +20,13 @@
 #' @export
 
 
-JulianDay <- function(year, month, day, hour, minute){
+JulianDay <- function(year, month, day, hour, minute, second){
 
   dj2000 <- 367 * year -
     as.integer(7 * (year + as.integer((month + 9)/12))/4)+
     as.integer(275 * month / 9) +
     day - 730531.5 +
-    (hour + minute/60)/24
+    (hour + minute/60 + second/3600)/24
 
   jd_ <- dj2000 + 2451545
 

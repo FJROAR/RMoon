@@ -4,7 +4,7 @@
 \alias{JulianDay}
 \title{JulianDay}
 \usage{
-JulianDay(year, month, day, hour, minute)
+JulianDay(year, month, day, hour, minute, second)
 }
 \arguments{
 \item{year, month, day, hour, minute}{Numerical vectors that take the temporal
@@ -21,7 +21,7 @@ Provides the Julian Day using 5 parameter from year up to minutes
 \examples{
 
 library(RMoon)
-jlData<- SunRightAscention01(year = 1992, month = 4, day = 12, hour = 0, minute = 0)
+jlData<- JulianDay(year = 1992, month = 4, day = 12, hour = 0, minute = 0, second = 0)
 
 }
 \references{
