@@ -11,7 +11,7 @@ MoonBasicElements(juliancent)
 with sufficient number of decimals (recommended at least 9)}
 }
 \value{
-Numeric vector with the following components:
+List of 3 vectors with the following elements:
 
 L (Moon's mean longitude), D (Moon's mean elongation), M (Sun's mean anomaly)
 M' (Moon's mean anomaly), F' (Mean distance of the Moon from its ascending node),
