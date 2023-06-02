@@ -26,7 +26,7 @@ MoonGeoLat(L, D, M, M_, F_, A1, A3, E, E_2)
 \item{E_2}{Elemental parameter: Squared Adjustments by Earth excentricity}
 }
 \value{
-Geocentric latitude
+Vector of geocentric latitudes
 }
 \description{
 Provides the Geocentric Latitude of the Moon

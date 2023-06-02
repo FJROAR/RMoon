@@ -24,7 +24,8 @@ MoonGeoLongDist(L, D, M, M_, F_, A1, A2, E)
 \item{E}{Elemental parameter: Adjustments by Earth excentricity}
 }
 \value{
-Geocentric longitude of the Moon, distance between the centers of the Moon and Earth, and equatorial parallax
+List of geocentric longitudes of the Moon, distance between the centers
+of the Moon and Earth, and equatorial parallax
 }
 \description{
 Provides the Geocentric Longitude and Distance of the Moon
