@@ -14,7 +14,7 @@
 #' @param E_2 Elemental parameter: Squared Adjustments by Earth excentricity
 #'
 #'
-#' @return Geocentric latitude
+#' @return Vector of geocentric latitudes
 #'
 #' @examples
 #'
@@ -47,29 +47,35 @@ MoonGeoLat <- function(L, D, M, M_, F_, A1, A3, E, E_2){
   A1 <- A1 * 3.141592654 / 180
   A3 <- A3 * 3.141592654 / 180
 
+  # output vector
+  beta_v = numeric(length(L))
+
   df = PeriodicLat
 
+  for (i in c(1:(length(L)))){
 
-  df$B_eccen <- ifelse(abs(df$M) == 1,
+    df$B_eccen <- ifelse(abs(df$M) == 1,
                        df$B_coeff * as.numeric(sprintf("%.9f",E)),
                        ifelse(abs(df$M) == 2,
                               df$B_coeff * as.numeric(sprintf("%.9f",E_2)),
                               df$B_coeff))
 
-  df$B_term <- df$B_coeff *
-    as.numeric(sprintf("%.9f", sin(D * df$D + M * df$M + M_ * df$M_ + F_ * df$F)))
+    df$B_term <- df$B_coeff *
+      as.numeric(sprintf("%.9f", sin(D * df$D + M * df$M + M_ * df$M_ + F_ * df$F)))
 
-  total_B_term <- sum(df$B_term)
-  L_m = -2235 * sin(L)
-  A3_m = 382 * sin(A3)
-  A1_F = 175 * sin(A1 - F_)
-  A1_F2 = 175 * sin(A1 + F_)
-  L_M_ = 127 * sin(L - M_)
-  L_M_2 = 115 * sin(L + M_)
+    total_B_term <- sum(df$B_term)
+    L_m = -2235 * sin(L)
+    A3_m = 382 * sin(A3)
+    A1_F = 175 * sin(A1 - F_)
+    A1_F2 = 175 * sin(A1 + F_)
+    L_M_ = 127 * sin(L - M_)
+    L_M_2 = 115 * sin(L + M_)
 
-  total_B <- total_B_term + L_m + A3_m + A1_F + A1_F2 + L_M_ + L_M_2
+    total_B <- total_B_term + L_m + A3_m + A1_F + A1_F2 + L_M_ + L_M_2
 
-  beta <- total_B / 1000000
+    beta <- total_B / 1000000
+    beta_v[i] = beta_v
+  }
 
-  return(round(beta, 9))
+  return(round(beta_v, 9))
 }

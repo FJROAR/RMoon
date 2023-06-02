@@ -13,7 +13,8 @@
 #' @param E Elemental parameter: Adjustments by Earth excentricity
 #'
 #'
-#' @return Geocentric longitude of the Moon, distance between the centers of the Moon and Earth, and equatorial parallax
+#' @return List of geocentric longitudes of the Moon, distance between the centers
+#' of the Moon and Earth, and equatorial parallax
 #'
 #' @examples
 #'
@@ -45,37 +46,50 @@ MoonGeoLongDist <- function(L, D, M, M_, F_, A1, A2, E){
   A1 <- A1 * 3.141592654 / 180
   A2 <- A2 * 3.141592654 / 180
 
-  df = PeriodicLongDist
+  # output vector
+  lambda_v = numeric(length(L))
+  distance_v = numeric(length(L))
+  pi = numeric(length(L))
 
-  L_eccen <- ifelse(abs(df$M) == 1,
-                       df$L_coeff * E,
-                       ifelse(abs(df$M) == 2,
-                              df$L_coeff* E * E,
-                              df$L_coeff))
+  for (i in c(1:(length(L)))){
 
-  R_eccen <- ifelse(abs(df$M) == 1,
-                       df$R_coeff * E,
-                       ifelse(abs(df$M) == 2,
-                              df$R_coeff* E * E,
-                              df$R_coeff))
+    df = PeriodicLongDist
 
-  L_term <- df$L_coeff *
-    as.numeric(sprintf("%.9f", sin(D * df$D + M * df$M + M_ * df$M_ + F_ * df$F)))
+    L_eccen <- ifelse(abs(df$M) == 1,
+                      df$L_coeff * E,
+                      ifelse(abs(df$M) == 2,
+                             df$L_coeff* E * E,
+                             df$L_coeff))
 
-  R_term <- df$R_coeff *
-    as.numeric(sprintf("%.9f", cos(D * df$D + M * df$M + M_ * df$M_ + F_ * df$F)))
+    R_eccen <- ifelse(abs(df$M) == 1,
+                      df$R_coeff * E,
+                      ifelse(abs(df$M) == 2,
+                             df$R_coeff* E * E,
+                             df$R_coeff))
 
-  total_L_term <- sum(L_term)
-  A1_m <- 3958 * sin(A1)
-  L_F = 1962 * sin(L - F_)
-  A2_m = 318 * sin(A2)
+    L_term <- df$L_coeff *
+      as.numeric(sprintf("%.9f", sin(D * df$D + M * df$M + M_ * df$M_ + F_ * df$F)))
 
-  total_L <- total_L_term + A1_m + L_F + A2_m
-  total_R <- sum(R_term)
+    R_term <- df$R_coeff *
+      as.numeric(sprintf("%.9f", cos(D * df$D + M * df$M + M_ * df$M_ + F_ * df$F)))
 
-  lambda <- L_original + total_L/1000000
-  distance <- 385000.56 + total_R / 1000
-  pi <- asin(6378.14/distance) * 180 / 3.141592654
+    total_L_term <- sum(L_term)
+    A1_m <- 3958 * sin(A1)
+    L_F = 1962 * sin(L - F_)
+    A2_m = 318 * sin(A2)
 
-  return (list(lambda, distance, pi))
+    total_L <- total_L_term + A1_m + L_F + A2_m
+    total_R <- sum(R_term)
+
+    lambda <- L_original + total_L/1000000
+    distance <- 385000.56 + total_R / 1000
+    pi <- asin(6378.14/distance) * 180 / 3.141592654
+
+    lambda_v[i] = lambda
+    distance_v[i] = distance
+    pi_v[i] = pi
+
+  }
+
+  return (list(lambda_v, distance_v, pi_v))
 }
