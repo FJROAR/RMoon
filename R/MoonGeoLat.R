@@ -55,26 +55,26 @@ MoonGeoLat <- function(L, D, M, M_, F_, A1, A3, E, E_2){
   for (i in c(1:(length(L)))){
 
     df$B_eccen <- ifelse(abs(df$M) == 1,
-                       df$B_coeff * as.numeric(sprintf("%.9f",E)),
+                       df$B_coeff * as.numeric(sprintf("%.9f",E[i])),
                        ifelse(abs(df$M) == 2,
-                              df$B_coeff * as.numeric(sprintf("%.9f",E_2)),
+                              df$B_coeff * as.numeric(sprintf("%.9f",E_2[i])),
                               df$B_coeff))
 
     df$B_term <- df$B_coeff *
-      as.numeric(sprintf("%.9f", sin(D * df$D + M * df$M + M_ * df$M_ + F_ * df$F)))
+      as.numeric(sprintf("%.9f", sin(D[i] * df$D + M[i] * df$M + M_[i] * df$M_ + F_[i] * df$F)))
 
     total_B_term <- sum(df$B_term)
-    L_m = -2235 * sin(L)
-    A3_m = 382 * sin(A3)
-    A1_F = 175 * sin(A1 - F_)
-    A1_F2 = 175 * sin(A1 + F_)
-    L_M_ = 127 * sin(L - M_)
-    L_M_2 = 115 * sin(L + M_)
+    L_m = -2235 * sin(L[i])
+    A3_m = 382 * sin(A3[i])
+    A1_F = 175 * sin(A1[i] - F_[i])
+    A1_F2 = 175 * sin(A1[i] + F_[i])
+    L_M_ = 127 * sin(L[i] - M_[i])
+    L_M_2 = 115 * sin(L[i] + M_[i])
 
     total_B <- total_B_term + L_m + A3_m + A1_F + A1_F2 + L_M_ + L_M_2
 
     beta <- total_B / 1000000
-    beta_v[i] = beta_v
+    beta_v[i] = beta
   }
 
   return(round(beta_v, 9))

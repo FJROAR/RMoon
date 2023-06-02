@@ -49,39 +49,39 @@ MoonGeoLongDist <- function(L, D, M, M_, F_, A1, A2, E){
   # output vector
   lambda_v = numeric(length(L))
   distance_v = numeric(length(L))
-  pi = numeric(length(L))
+  pi_v = numeric(length(L))
 
   for (i in c(1:(length(L)))){
 
     df = PeriodicLongDist
 
     L_eccen <- ifelse(abs(df$M) == 1,
-                      df$L_coeff * E,
+                      df$L_coeff * E[i],
                       ifelse(abs(df$M) == 2,
-                             df$L_coeff* E * E,
+                             df$L_coeff* E[i] * E[i],
                              df$L_coeff))
 
     R_eccen <- ifelse(abs(df$M) == 1,
-                      df$R_coeff * E,
+                      df$R_coeff * E[i],
                       ifelse(abs(df$M) == 2,
-                             df$R_coeff* E * E,
+                             df$R_coeff* E[i] * E[i],
                              df$R_coeff))
 
     L_term <- df$L_coeff *
-      as.numeric(sprintf("%.9f", sin(D * df$D + M * df$M + M_ * df$M_ + F_ * df$F)))
+      as.numeric(sprintf("%.9f", sin(D[i] * df$D + M[i] * df$M + M_[i] * df$M_ + F_[i] * df$F)))
 
     R_term <- df$R_coeff *
-      as.numeric(sprintf("%.9f", cos(D * df$D + M * df$M + M_ * df$M_ + F_ * df$F)))
+      as.numeric(sprintf("%.9f", cos(D[i] * df$D + M[i] * df$M + M_[i] * df$M_ + F_[i] * df$F)))
 
     total_L_term <- sum(L_term)
-    A1_m <- 3958 * sin(A1)
-    L_F = 1962 * sin(L - F_)
-    A2_m = 318 * sin(A2)
+    A1_m <- 3958 * sin(A1[i])
+    L_F = 1962 * sin(L[i] - F_[i])
+    A2_m = 318 * sin(A2[i])
 
     total_L <- total_L_term + A1_m + L_F + A2_m
     total_R <- sum(R_term)
 
-    lambda <- L_original + total_L/1000000
+    lambda <- L_original[i] + total_L/1000000
     distance <- 385000.56 + total_R / 1000
     pi <- asin(6378.14/distance) * 180 / 3.141592654
 
