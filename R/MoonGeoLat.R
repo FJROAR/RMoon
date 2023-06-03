@@ -27,8 +27,7 @@
 #'                     F_ = 219.88972622,
 #'                     A1 = 109.56847763,
 #'                     A3 = 229.53,
-#'                     E  = 1.0001942441,
-#'                     E_2 = 1.0001942441**2)
+#'                     E  = 1.0001942441)
 #'
 #' @references
 #' Jean Meeus (1991), Astronomical Algorithms, ISBN 0-943396-35-2
@@ -36,7 +35,7 @@
 #' @export
 
 
-MoonGeoLat <- function(L, D, M, M_, F_, A1, A3, E, E_2){
+MoonGeoLat <- function(L, D, M, M_, F_, A1, A3, E){
 
   L_original = L
   L <- L * 3.141592654 / 180
@@ -46,6 +45,8 @@ MoonGeoLat <- function(L, D, M, M_, F_, A1, A3, E, E_2){
   F_ <- F_ * 3.141592654 / 180
   A1 <- A1 * 3.141592654 / 180
   A3 <- A3 * 3.141592654 / 180
+
+  E_2 = E **2
 
   # output vector
   beta_v = numeric(length(L))
@@ -69,7 +70,7 @@ MoonGeoLat <- function(L, D, M, M_, F_, A1, A3, E, E_2){
     A1_F = 175 * sin(A1[i] - F_[i])
     A1_F2 = 175 * sin(A1[i] + F_[i])
     L_M_ = 127 * sin(L[i] - M_[i])
-    L_M_2 = 115 * sin(L[i] + M_[i])
+    L_M_2 = -115 * sin(L[i] + M_[i])
 
     total_B <- total_B_term + L_m + A3_m + A1_F + A1_F2 + L_M_ + L_M_2
 
