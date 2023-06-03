@@ -11,8 +11,6 @@
 #' @param A1 Elemental parameter: Adjustments by Venus perturbation
 #' @param A3 Elemental parameter: Adjustments by Jupiter perturbation
 #' @param E Elemental parameter: Adjustments by Earth excentricity
-#' @param E_2 Elemental parameter: Squared Adjustments by Earth excentricity
-#'
 #'
 #' @return Vector of geocentric latitudes
 #'
@@ -33,7 +31,6 @@
 #' Jean Meeus (1991), Astronomical Algorithms, ISBN 0-943396-35-2
 #'
 #' @export
-
 
 MoonGeoLat <- function(L, D, M, M_, F_, A1, A3, E){
 

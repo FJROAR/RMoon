@@ -4,7 +4,7 @@
 \alias{MoonGeoLat}
 \title{MoonGeoLat}
 \usage{
-MoonGeoLat(L, D, M, M_, F_, A1, A3, E, E_2)
+MoonGeoLat(L, D, M, M_, F_, A1, A3, E)
 }
 \arguments{
 \item{L}{Elemental parameter: Moon's mean longitude}
@@ -22,8 +22,6 @@ MoonGeoLat(L, D, M, M_, F_, A1, A3, E, E_2)
 \item{A3}{Elemental parameter: Adjustments by Jupiter perturbation}
 
 \item{E}{Elemental parameter: Adjustments by Earth excentricity}
-
-\item{E_2}{Elemental parameter: Squared Adjustments by Earth excentricity}
 }
 \value{
 Vector of geocentric latitudes
@@ -43,8 +41,7 @@ GeoLat<- MoonGeoLat(L  = 134.29018627,
                     F_ = 219.88972622,
                     A1 = 109.56847763,
                     A3 = 229.53,
-                    E  = 1.0001942441,
-                    E_2 = 1.0001942441**2)
+                    E  = 1.0001942441)
 
 }
 \references{
