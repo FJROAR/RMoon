@@ -9,7 +9,7 @@
 #'
 #' @return Equatorial coordinates in a vector of 7 components:
 #' Hour of alpha (or right ascension),
-#' minutes of alpha
+#' minutes of alphA
 #' seconds of alpha
 #' sign of declination
 #' degrees of delta (or declination)
@@ -30,7 +30,7 @@
 #' @export
 
 
-Ecliptic2Ecuatorial <- function(lambdaT, betaT, eclipR){
+Ecliptic2Equatorial <- function(lambdaT, betaT, eclipR){
 
   lambdaR <- lambdaT * 3.141592654 / 180
   betaR <- betaT * 3.141592654 / 180

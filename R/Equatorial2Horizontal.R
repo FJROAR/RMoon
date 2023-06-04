@@ -25,7 +25,7 @@
 #' @export
 
 
-Ecliptic2Ecuatorial <- function(LocalHourAngleT, DeclinationT, LatitudeT){
+Equatorial2Horizontal <- function(LocalHourAngleT, DeclinationT, LatitudeT){
 
   LocalHourAngleR <- 15 * LocalHourAngleT * 3.141592654 / 180
   DeclinationR <- DeclinationT * 3.141592654 / 180
