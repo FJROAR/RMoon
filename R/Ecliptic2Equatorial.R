@@ -86,6 +86,6 @@ Ecliptic2Equatorial <- function(lambdaT, betaT, eclipR){
   }
 
 
-  return(c(alfaG, alfaM, alfaS, signo, deltaG, deltaM, deltaS))
+  return(list(alfaG, alfaM, alfaS, signo, deltaG, deltaM, deltaS))
 
 }
