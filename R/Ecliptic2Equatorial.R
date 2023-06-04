@@ -7,14 +7,9 @@
 #' @param eclipR True Obliquity of the ecliptic (corrected by aberration and nutation)
 #'
 #'
-#' @return Equatorial coordinates in a vector of 7 components:
-#' Hour of alpha (or right ascension),
-#' minutes of alphA
-#' seconds of alpha
-#' sign of declination
-#' degrees of delta (or declination)
-#' minutes of delta
-#' seconds of delta
+#' @return Equatorial coordinates in a list of 2 vectors:
+#' RA or right ascension (in hours),
+#' Declination (in degrees)
 #'
 #' @examples
 #'
@@ -32,60 +27,71 @@
 
 Ecliptic2Equatorial <- function(lambdaT, betaT, eclipR){
 
-  lambdaR <- lambdaT * 3.141592654 / 180
-  betaR <- betaT * 3.141592654 / 180
-  eclipR <- eclipR * 3.141592654 / 180
+  RA = numeric(lenght(lambdaT))
+  Declinacion = numeric(lenght(lambdaT))
 
-  a_alfa <- sin(lambdaR) * cos(eclipR) - tan(betaR) * sin(eclipR)
-  b_alfa <- cos(lambdaR)
-  tan_alfa = a_alfa / b_alfa
+  for (i in c(1: length(lambdaT)))
 
-  a_delta <- sin(betaR) * cos(eclipR) + cos(betaR) * sin(eclipR) * sin(lambdaR)
-  b_delta <- cos(asin(a_delta))
-  tan_delta = a_delta / b_delta
+  {
 
-  delta <- asin(a_delta) * 180 / 3.141592654
-  alfa <- ifelse(b_alfa < 0,
-                 3.141592654 + atan(tan_alfa),
-                 ifelse(a_alfa < 0,
-                        2 * 3.141592654 + atan(tan_alfa),
-                        atan(tan_alfa)))
+    lambdaR <- lambdaT * 3.141592654 / 180
+    betaR <- betaT * 3.141592654 / 180
+    eclipR <- eclipR * 3.141592654 / 180
 
-  alfa <- (alfa * (180 / 3.141592654)) / 15
+    a_alfa <- sin(lambdaR) * cos(eclipR) - tan(betaR) * sin(eclipR)
+    b_alfa <- cos(lambdaR)
+    tan_alfa = a_alfa / b_alfa
 
-  alfaG <- as.integer(alfa)
-  aux <- alfa - alfaG
-  alfaM <- 60 * aux
-  aux2 <- alfaM - as.integer(alfaM)
-  alfaM <- as.integer(alfaM)
-  alfaS <- round(aux2 * 60, 0)
+    a_delta <- sin(betaR) * cos(eclipR) + cos(betaR) * sin(eclipR) * sin(lambdaR)
+    b_delta <- cos(asin(a_delta))
+    tan_delta = a_delta / b_delta
+
+    delta <- asin(a_delta) * 180 / 3.141592654
+    alfa <- ifelse(b_alfa < 0,
+                   3.141592654 + atan(tan_alfa),
+                   ifelse(a_alfa < 0,
+                          2 * 3.141592654 + atan(tan_alfa),
+                          atan(tan_alfa)))
+
+    alfa <- (alfa * (180 / 3.141592654)) / 15
+
+    alfaG <- as.integer(alfa)
+    aux <- alfa - alfaG
+    alfaM <- 60 * aux
+    aux2 <- alfaM - as.integer(alfaM)
+    alfaM <- as.integer(alfaM)
+    alfaS <- round(aux2 * 60, 0)
 
 
-  if (delta >= 0){
+    if (delta >= 0){
 
-    deltaG <- as.integer(delta)
-    aux <- delta - deltaG
-    deltaM <- 60 * aux
-    aux2 <- deltaM - as.integer(deltaM)
-    deltaM <- as.integer(deltaM)
-    deltaS <- round(aux2 * 60, 0)
-    signo = 1
+      deltaG <- as.integer(delta)
+      aux <- delta - deltaG
+      deltaM <- 60 * aux
+      aux2 <- deltaM - as.integer(deltaM)
+      deltaM <- as.integer(deltaM)
+      deltaS <- round(aux2 * 60, 0)
+      signo = 1
+    }
+
+
+    if (delta < 0){
+
+      absdelta <- abs(delta)
+      deltaG <- as.integer(absdelta)
+      aux <- absdelta - deltaG
+      deltaM <- 60 * aux
+      aux2 <- deltaM - as.integer(deltaM)
+      deltaM <- as.integer(deltaM)
+      deltaS <- round(aux2 * 60, 0)
+      signo = -1
+    }
+
+    RA[i] = AlfaG + AlfaS/60 + AlfaS/3600
+    Declinacion[i] = signo * (deltaG + deltaM/60 + deltaS/3600)
+
   }
 
-
-  if (delta < 0){
-
-    absdelta <- abs(delta)
-    deltaG <- as.integer(absdelta)
-    aux <- absdelta - deltaG
-    deltaM <- 60 * aux
-    aux2 <- deltaM - as.integer(deltaM)
-    deltaM <- as.integer(deltaM)
-    deltaS <- round(aux2 * 60, 0)
-    signo = -1
-  }
-
-
-  return(list(alfaG, alfaM, alfaS, signo, deltaG, deltaM, deltaS))
+  return(list(RA, Declinacion))
 
 }

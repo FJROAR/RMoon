@@ -14,14 +14,9 @@ Ecliptic2Equatorial(lambdaT, betaT, eclipR)
 \item{eclipR}{True Obliquity of the ecliptic (corrected by aberration and nutation)}
 }
 \value{
-Equatorial coordinates in a vector of 7 components:
-Hour of alpha (or right ascension),
-minutes of alphA
-seconds of alpha
-sign of declination
-degrees of delta (or declination)
-minutes of delta
-seconds of delta
+Equatorial coordinates in a list of 2 vectors:
+RA or right ascension (in hours),
+Declination (in degrees)
 }
 \description{
 Conversion of ecliptical coordinates to Equatorial
