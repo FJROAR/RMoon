@@ -5,7 +5,7 @@
 #'
 #' @param julianCent Numerical vector which represents a Julian converted in millenium
 #'
-#' @return varNutation (Nutation in longitude) in degrees, parameter needed for the Moon's Declination and Right Ascension
+#' @return Vector of varNutation (Nutation in longitude) in degrees, parameter needed for the Moon's Declination and Right Ascension
 #'
 #' @examples
 #'
@@ -20,56 +20,65 @@
 
 NutationLong <- function(juliancent){
 
-  #Nutation in Longitude
+  varNutation = numeric(length(juliancent))
 
-  D <- 297.85036 +
-    445267.111480 * juliancent -
-    0.0019142 * juliancent**2 +
-    juliancent**3 / 189474
+  for (i in c(1: length(juliancent))){
 
-  D <- D %% 360
-  if (D < 0) {D <- D + 360}
+    #Nutation in Longitude
 
-  M = 357.52772 + 35999.050340 * juliancent -
-    0.0001603 * juliancent**2 -
-    juliancent / 300000;
+    D <- 297.85036 +
+      445267.111480 * juliancent -
+      0.0019142 * juliancent**2 +
+      juliancent**3 / 189474
 
-  M <- M %% 360
-  if (M < 0) {M <- M + 360}
+    D <- D %% 360
+    if (D < 0) {D <- D + 360}
 
-  Mprime <- 134.96298 + 477198.867398 * juliancent +
-    0.0086972 * juliancent**2 +
-    juliancent**3 / 56250
+    M = 357.52772 + 35999.050340 * juliancent -
+      0.0001603 * juliancent**2 -
+      juliancent / 300000;
 
-  Mprime <- Mprime %% 360
-  if (Mprime < 0) {Mprime <- Mprime + 360}
+    M <- M %% 360
+    if (M < 0) {M <- M + 360}
 
-  F_ <- 93.27191 + 483202.017538 * juliancent -
-    0.0036825 * juliancent**2 +
-    juliancent**3 / 327270;
+    Mprime <- 134.96298 + 477198.867398 * juliancent +
+      0.0086972 * juliancent**2 +
+      juliancent**3 / 56250
 
-  F_ <- F_ %% 360
-  if (F_ < 0) {F_ <- F_ + 360}
+    Mprime <- Mprime %% 360
+    if (Mprime < 0) {Mprime <- Mprime + 360}
 
-  O = 125.04452 - 1934.136261 * juliancent +
-    0.0020708 * juliancent**2 +
-    juliancent**3 / 450000;
+    F_ <- 93.27191 + 483202.017538 * juliancent -
+      0.0036825 * juliancent**2 +
+      juliancent**3 / 327270;
 
-  O <- O %% 360
-  if (O < 0) {O <- O + 360}
+    F_ <- F_ %% 360
+    if (F_ < 0) {F_ <- F_ + 360}
 
-  df <- PeriodicNutObliq
+    O = 125.04452 - 1934.136261 * juliancent +
+      0.0020708 * juliancent**2 +
+      juliancent**3 / 450000;
 
-  df$ArgNutObliq <- pi * (df$D * D +
-    df$M * M +
-    df$M_ * Mprime +
-    df$F * F_ +
-    df$O * O) / 180
+    O <- O %% 360
+    if (O < 0) {O <- O + 360}
 
-  df$NutObliq <- (df$Nut1 + df$Nut2 * juliancent) *
-    0.0001 * sin(df$ArgNutObliq)
+    df <- PeriodicNutObliq
 
-  varNutation = sum(df$NutObliq)/3600
+    df$ArgNutObliq <- pi * (df$D * D +
+                              df$M * M +
+                              df$M_ * Mprime +
+                              df$F * F_ +
+                              df$O * O) / 180
+
+    df$NutObliq <- (df$Nut1 + df$Nut2 * juliancent) *
+      0.0001 * sin(df$ArgNutObliq)
+
+    varNutation[i] = sum(df$NutObliq)/3600
+
+
+
+  }
+
 
   return(varNutation)
 }

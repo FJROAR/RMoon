@@ -10,7 +10,7 @@ NutationLong(juliancent)
 \item{julianCent}{Numerical vector which represents a Julian converted in millenium}
 }
 \value{
-varNutation (Nutation in longitude) in degrees, parameter needed for the Moon's Declination and Right Ascension
+Vector of varNutation (Nutation in longitude) in degrees, parameter needed for the Moon's Declination and Right Ascension
 }
 \description{
 Estimation of the longitude of nutation according to

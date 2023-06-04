@@ -10,7 +10,7 @@ TrueObliqutiyEcliptic(juliancent)
 \item{julianCent}{Numerical vector which represents a Julian converted in millenium}
 }
 \value{
-Epsilon (Obliquity of the Ecliptic) in degrees, parameter needed for the Sun's Declination and Right Ascension
+Vector of epsilons (Obliquity of the Ecliptic) in degrees, parameter needed for the Sun's Declination and Right Ascension
 }
 \description{
 Estimation of the obliquity of ecliptic according to

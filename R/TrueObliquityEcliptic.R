@@ -5,7 +5,7 @@
 #'
 #' @param julianCent Numerical vector which represents a Julian converted in millenium
 #'
-#' @return Epsilon (Obliquity of the Ecliptic) in degrees, parameter needed for the Sun's Declination and Right Ascension
+#' @return Vector of epsilons (Obliquity of the Ecliptic) in degrees, parameter needed for the Sun's Declination and Right Ascension
 #'
 #' @examples
 #'
@@ -20,71 +20,78 @@
 
 TrueObliqutiyEcliptic <- function(juliancent){
 
-  U = juliancent / 100
-  epsilon0 <- 23 + 26 / 60 + 21.448 / 3600 -
-    4680.93/ 3600 * U -
-    1.55/ 3600  * U**2 +
-    1999.25/ 3600 * U**3 -
-    51.38/ 3600 * U**4 -
-    249.67/ 3600 * U**5 -
-    39.05/ 3600 * U**6 +
-    7.12/ 3600 * U**7 +
-    27.87/ 3600 * U**8 +
-    5.79/ 3600 * U**9 +
-    2.45/ 3600 * U**10
+  epsilon = numeric(length(juliancent))
 
-  #Nutation in Obliquity
+  for (i in c(1: length(juliancent))){
 
-  D <- 297.85036 +
-    445267.111480 * juliancent -
-    0.0019142 * juliancent**2 +
-    juliancent**3 / 189474
+    U = juliancent / 100
+    epsilon0 <- 23 + 26 / 60 + 21.448 / 3600 -
+      4680.93/ 3600 * U -
+      1.55/ 3600  * U**2 +
+      1999.25/ 3600 * U**3 -
+      51.38/ 3600 * U**4 -
+      249.67/ 3600 * U**5 -
+      39.05/ 3600 * U**6 +
+      7.12/ 3600 * U**7 +
+      27.87/ 3600 * U**8 +
+      5.79/ 3600 * U**9 +
+      2.45/ 3600 * U**10
 
-  D <- D %% 360
-  if (D < 0) {D <- D + 360}
+    #Nutation in Obliquity
 
-  M = 357.52772 + 35999.050340 * juliancent -
-    0.0001603 * juliancent**2 -
-    juliancent / 300000;
+    D <- 297.85036 +
+      445267.111480 * juliancent -
+      0.0019142 * juliancent**2 +
+      juliancent**3 / 189474
 
-  M <- M %% 360
-  if (M < 0) {M <- M + 360}
+    D <- D %% 360
+    if (D < 0) {D <- D + 360}
 
-  Mprime <- 134.96298 + 477198.867398 * juliancent +
-    0.0086972 * juliancent**2 +
-    juliancent**3 / 56250
+    M = 357.52772 + 35999.050340 * juliancent -
+      0.0001603 * juliancent**2 -
+      juliancent / 300000;
 
-  Mprime <- Mprime %% 360
-  if (Mprime < 0) {Mprime <- Mprime + 360}
+    M <- M %% 360
+    if (M < 0) {M <- M + 360}
 
-  F_ <- 93.27191 + 483202.017538 * juliancent -
-    0.0036825 * juliancent**2 +
-    juliancent**3 / 327270;
+    Mprime <- 134.96298 + 477198.867398 * juliancent +
+      0.0086972 * juliancent**2 +
+      juliancent**3 / 56250
 
-  F_ <- F_ %% 360
-  if (F_ < 0) {F_ <- F_ + 360}
+    Mprime <- Mprime %% 360
+    if (Mprime < 0) {Mprime <- Mprime + 360}
 
-  O = 125.04452 - 1934.136261 * juliancent +
-    0.0020708 * juliancent**2 +
-    juliancent**3 / 450000;
+    F_ <- 93.27191 + 483202.017538 * juliancent -
+      0.0036825 * juliancent**2 +
+      juliancent**3 / 327270;
 
-  O <- O %% 360
-  if (O < 0) {O <- O + 360}
+    F_ <- F_ %% 360
+    if (F_ < 0) {F_ <- F_ + 360}
 
-  df <- PeriodicNutObliq
+    O = 125.04452 - 1934.136261 * juliancent +
+      0.0020708 * juliancent**2 +
+      juliancent**3 / 450000;
 
-  df$ArgNutObliq <- pi * (df$D * D +
-    df$M * M +
-    df$M_ * Mprime +
-    df$F * F_ +
-    df$O * O) / 180
+    O <- O %% 360
+    if (O < 0) {O <- O + 360}
 
-  df$NutObliq <- (df$Obl1 + df$Obl2 * juliancent) *
-    0.0001 * cos(df$ArgNutObliq)
+    df <- PeriodicNutObliq
 
-  varEpsilon = sum(df$NutObliq)
+    df$ArgNutObliq <- pi * (df$D * D +
+                              df$M * M +
+                              df$M_ * Mprime +
+                              df$F * F_ +
+                              df$O * O) / 180
 
-  epsilon <- epsilon0 + varEpsilon / 3600
+    df$NutObliq <- (df$Obl1 + df$Obl2 * juliancent) *
+      0.0001 * cos(df$ArgNutObliq)
+
+    varEpsilon = sum(df$NutObliq)
+
+    epsilon[i] <- epsilon0 + varEpsilon / 3600
+
+  }
+
 
   return(epsilon)
 }
