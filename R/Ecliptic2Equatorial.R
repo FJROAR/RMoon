@@ -1,14 +1,14 @@
-#' @title Ecliptic2Ecuatorial
+#' @title Ecliptic2Equatorial
 #'
-#' @description Conversion of eclitical coordinates to Ecuatorial
+#' @description Conversion of ecliptical coordinates to Equatorial
 #'
 #' @param lambdaT Ecliptical or celestial longitude, measured from vernal equinnox
 #' @param betaT Ecliptical or celestial latitude, positive if north, negative if south
 #' @param eclipR True Obliquity of the ecliptic (corrected by aberration and nutation)
 #'
 #'
-#' @return Ecuatorial coordinates in a vector of 7 components:
-#' hours of alpha (or right ascencion),
+#' @return Equatorial coordinates in a vector of 7 components:
+#' Hour of alpha (or right ascension),
 #' minutes of alpha
 #' seconds of alpha
 #' sign of declination
@@ -20,7 +20,7 @@
 #'
 #'
 #' library(RMoon)
-#' ecuatorial <- Ecliptic2Ecuatorial(lambdaT = 133.167265,
+#' equatorial <- Ecliptic2Equatorial(lambdaT = 133.167265,
 #'                                   betaT = -3.2291226,
 #'                                   eclipR = 23.440636)
 #'
