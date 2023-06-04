@@ -27,8 +27,8 @@
 
 Ecliptic2Equatorial <- function(lambdaT, betaT, eclipR){
 
-  RA = numeric(lenght(lambdaT))
-  Declinacion = numeric(lenght(lambdaT))
+  RA = numeric(length(lambdaT))
+  Declinacion = numeric(length(lambdaT))
 
   for (i in c(1: length(lambdaT)))
 
