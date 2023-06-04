@@ -26,41 +26,56 @@
 
 MoonBasicElements <- function(juliancent){
 
-  L <- (218.3164591 +
-           481267.88134236 * juliancent -
-           0.0013268 * juliancent^2 +
-          juliancent^3 / 538841 -
-          juliancent^4 / 65194000) %% 360
+  L = numeric(length(juliancent))
+  D = numeric(length(juliancent))
+  M = numeric(length(juliancent))
+  M_ = numeric(length(juliancent))
+  F_ = numeric(length(juliancent))
+  A1 = numeric(length(juliancent))
+  A2 = numeric(length(juliancent))
+  A3 = numeric(length(juliancent))
+  E = numeric(length(juliancent))
+
+  for (i in c(1: length(juliancent))){
+
+    L[i] <- (218.3164591 +
+            481267.88134236 * juliancent[i] -
+            0.0013268 * juliancent[i]^2 +
+            juliancent[i]^3 / 538841 -
+            juliancent[i]^4 / 65194000) %% 360
 
 
-  D <- (297.8502042 +
-          445267.1115168 * juliancent -
-          0.00163 * juliancent^2 +
-          juliancent^3 / 545868 -
-          juliancent^4 / 113065000) %% 360
+    D[i] <- (297.8502042 +
+            445267.1115168 * juliancent[i] -
+            0.00163 * juliancent[i]^2 +
+            juliancent[i]^3 / 545868 -
+            juliancent[i]^4 / 113065000) %% 360
 
-  M <- (357.5291092 +
-          35999.0502909 * juliancent -
-          0.0001536 * juliancent^2 +
-          juliancent^3 / 24490000) %% 360
+    M[i] <- (357.5291092 +
+            35999.0502909 * juliancent[i] -
+            0.0001536 * juliancent[i]^2 +
+            juliancent[i]^3 / 24490000) %% 360
 
-  M_ <- (134.9634114 +
-           477198.8676313 * juliancent +
-           0.008997 * juliancent^2 +
-           juliancent^3 / 69699 -
-           juliancent^4 / 14712000) %% 360
+    M_[i] <- (134.9634114 +
+             477198.8676313 * juliancent[i] +
+             0.008997 * juliancent[i]^2 +
+             juliancent[i]^3 / 69699 -
+             juliancent[i]^4 / 14712000) %% 360
 
-  F_ <- (93.2720993 +
-           483202.0175273 * juliancent -
-           0.0034029 * juliancent^2 +
-           juliancent^3 / 3526000 -
-           juliancent^4 / 863310000) %% 360
+    F_[i] <- (93.2720993 +
+             483202.0175273 * juliancent[i] -
+             0.0034029 * juliancent[i]^2 +
+             juliancent[i]^3 / 3526000 -
+             juliancent[i]^4 / 863310000) %% 360
 
-  A1 <- (119.75 + 131.849 * juliancent) %% 360
-  A2 <- (53.09 + 479264.29 * juliancent) %% 360
-  A3 <- (313.45 + 481266.484 * juliancent) %% 360
+    A1[i] <- (119.75 + 131.849 * juliancent[i]) %% 360
+    A2[i] <- (53.09 + 479264.29 * juliancent[i]) %% 360
+    A3[i] <- (313.45 + 481266.484 * juliancent[i]) %% 360
 
-  E <- 1 - 0.002516 * juliancent - 0.0000074 * juliancent^2
+    E[i] <- 1 - 0.002516 * juliancent[i] - 0.0000074 * juliancent[i]^2
+
+  }
+
 
   return(list(L, D, M, M_, F_, A1, A2, A3, E))
 
