@@ -87,7 +87,7 @@ Ecliptic2Equatorial <- function(lambdaT, betaT, eclipT){
       signo = -1
     }
 
-    RA[i] = AlfaG + AlfaS/60 + AlfaS/3600
+    RA[i] = alfaG + alfaS/60 + alfaS/3600
     Declinacion[i] = signo * (deltaG + deltaM/60 + deltaS/3600)
 
   }
