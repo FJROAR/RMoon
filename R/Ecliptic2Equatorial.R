@@ -4,7 +4,7 @@
 #'
 #' @param lambdaT Ecliptical or celestial longitude, measured from vernal equinnox
 #' @param betaT Ecliptical or celestial latitude, positive if north, negative if south
-#' @param eclipR True Obliquity of the ecliptic (corrected by aberration and nutation)
+#' @param eclipT True Obliquity of the ecliptic (corrected by aberration and nutation)
 #'
 #'
 #' @return Equatorial coordinates in a list of 2 vectors:
@@ -25,7 +25,7 @@
 #' @export
 
 
-Ecliptic2Equatorial <- function(lambdaT, betaT, eclipR){
+Ecliptic2Equatorial <- function(lambdaT, betaT, eclipT){
 
   RA = numeric(length(lambdaT))
   Declinacion = numeric(length(lambdaT))
@@ -34,9 +34,9 @@ Ecliptic2Equatorial <- function(lambdaT, betaT, eclipR){
 
   {
 
-    lambdaR <- lambdaT * 3.141592654 / 180
-    betaR <- betaT * 3.141592654 / 180
-    eclipR <- eclipR * 3.141592654 / 180
+    lambdaR <- lambdaT[i] * 3.141592654 / 180
+    betaR <- betaT[i] * 3.141592654 / 180
+    eclipR <- eclipT[i] * 3.141592654 / 180
 
     a_alfa <- sin(lambdaR) * cos(eclipR) - tan(betaR) * sin(eclipR)
     b_alfa <- cos(lambdaR)

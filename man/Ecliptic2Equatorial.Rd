@@ -4,14 +4,14 @@
 \alias{Ecliptic2Equatorial}
 \title{Ecliptic2Equatorial}
 \usage{
-Ecliptic2Equatorial(lambdaT, betaT, eclipR)
+Ecliptic2Equatorial(lambdaT, betaT, eclipT)
 }
 \arguments{
 \item{lambdaT}{Ecliptical or celestial longitude, measured from vernal equinnox}
 
 \item{betaT}{Ecliptical or celestial latitude, positive if north, negative if south}
 
-\item{eclipR}{True Obliquity of the ecliptic (corrected by aberration and nutation)}
+\item{eclipT}{True Obliquity of the ecliptic (corrected by aberration and nutation)}
 }
 \value{
 Equatorial coordinates in a list of 2 vectors:
