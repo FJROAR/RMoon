@@ -15,8 +15,8 @@
 #'
 #'
 #' library(RMoon)
-#' equatorial <- Ecliptic2Equatorial(lambdaT = 133.167265,
-#'                                   betaT = -3.2291226,
+#' equatorial <- Ecliptic2Equatorial(lambdaT = 133.162655,
+#'                                   betaT = -3.229126,
 #'                                   eclipT = 23.440636)
 #'
 #' @references

@@ -88,7 +88,7 @@ TrueObliqutiyEcliptic <- function(juliancent){
 
     varEpsilon = sum(df$NutObliq)
 
-    epsilon[i] <- epsilon0 + varEpsilon / 3600
+    epsilon[i] <- (epsilon0 * 3600 + varEpsilon) / 3600
 
   }
 
