@@ -27,7 +27,7 @@ Conversion of ecliptical coordinates to Equatorial
 library(RMoon)
 equatorial <- Ecliptic2Equatorial(lambdaT = 133.167265,
                                   betaT = -3.2291226,
-                                  eclipR = 23.440636)
+                                  eclipT = 23.440636)
 
 }
 \references{

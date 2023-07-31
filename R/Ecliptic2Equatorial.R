@@ -17,7 +17,7 @@
 #' library(RMoon)
 #' equatorial <- Ecliptic2Equatorial(lambdaT = 133.167265,
 #'                                   betaT = -3.2291226,
-#'                                   eclipR = 23.440636)
+#'                                   eclipT = 23.440636)
 #'
 #' @references
 #' Jean Meeus (1991), Astronomical Algorithms, ISBN 0-943396-35-2
@@ -87,7 +87,7 @@ Ecliptic2Equatorial <- function(lambdaT, betaT, eclipT){
       signo = -1
     }
 
-    RA[i] = alfaG + alfaS/60 + alfaS/3600
+    RA[i] = alfaG + alfaM/60 + alfaS/3600
     Declinacion[i] = signo * (deltaG + deltaM/60 + deltaS/3600)
 
   }
