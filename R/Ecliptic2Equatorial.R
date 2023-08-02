@@ -34,9 +34,9 @@ Ecliptic2Equatorial <- function(lambdaT, betaT, eclipT){
 
   {
 
-    lambdaR <- lambdaT[i] * 3.141592654 / 180
-    betaR <- betaT[i] * 3.141592654 / 180
-    eclipR <- eclipT[i] * 3.141592654 / 180
+    lambdaR <- lambdaT[i] * pi / 180
+    betaR <- betaT[i] * pi / 180
+    eclipR <- eclipT[i] * pi / 180
 
     a_alfa <- sin(lambdaR) * cos(eclipR) - tan(betaR) * sin(eclipR)
     b_alfa <- cos(lambdaR)
@@ -44,15 +44,15 @@ Ecliptic2Equatorial <- function(lambdaT, betaT, eclipT){
 
     a_delta <- sin(betaR) * cos(eclipR) + cos(betaR) * sin(eclipR) * sin(lambdaR)
 
-    delta <- asin(a_delta) * 180 / 3.141592654
+    delta <- asin(a_delta) * 180 / pi
 
     alfa <- ifelse(b_alfa < 0,
-                   3.141592654 + atan(tan_alfa),
+                   pi + atan(tan_alfa),
                    ifelse(a_alfa < 0,
-                          2 * 3.141592654 + atan(tan_alfa),
+                          2 * pi + atan(tan_alfa),
                           atan(tan_alfa)))
 
-    alfa <- (alfa * (180 / 3.141592654)) / 15
+    alfa <- (alfa * (180 / pi)) / 15
 
     RA[i] = alfa
     Declinacion[i] = delta
