@@ -7,14 +7,14 @@
 SunRightAscension01(epsilon, lambda)
 }
 \arguments{
-\item{epsilon}{Numerical vector which represents the eccentricity of the
-Earth's orbit}
+\item{epsilon}{Numerical vector which represents the obliquity of the
+ecliptic}
 
 \item{lambda}{Numerical vector which represents the apparent longitude of the Sun,
 referred to the true equinox of the date}
 }
 \value{
-List of Hours, Minutes and Seconds of apparent right ascensions of the Sun
+Right Ascensions of the Sun
 }
 \description{
 Provides the Right Ascension of the Sun in the version low
