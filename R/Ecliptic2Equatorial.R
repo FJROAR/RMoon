@@ -43,10 +43,9 @@ Ecliptic2Equatorial <- function(lambdaT, betaT, eclipT){
     tan_alfa = a_alfa / b_alfa
 
     a_delta <- sin(betaR) * cos(eclipR) + cos(betaR) * sin(eclipR) * sin(lambdaR)
-    b_delta <- cos(asin(a_delta))
-    tan_delta = a_delta / b_delta
 
     delta <- asin(a_delta) * 180 / 3.141592654
+
     alfa <- ifelse(b_alfa < 0,
                    3.141592654 + atan(tan_alfa),
                    ifelse(a_alfa < 0,
@@ -55,40 +54,8 @@ Ecliptic2Equatorial <- function(lambdaT, betaT, eclipT){
 
     alfa <- (alfa * (180 / 3.141592654)) / 15
 
-    alfaG <- as.integer(alfa)
-    aux <- alfa - alfaG
-    alfaM <- 60 * aux
-    aux2 <- alfaM - as.integer(alfaM)
-    alfaM <- as.integer(alfaM)
-    alfaS <- round(aux2 * 60, 0)
-
-
-    if (delta >= 0){
-
-      deltaG <- as.integer(delta)
-      aux <- delta - deltaG
-      deltaM <- 60 * aux
-      aux2 <- deltaM - as.integer(deltaM)
-      deltaM <- as.integer(deltaM)
-      deltaS <- round(aux2 * 60, 0)
-      signo = 1
-    }
-
-
-    if (delta < 0){
-
-      absdelta <- abs(delta)
-      deltaG <- as.integer(absdelta)
-      aux <- absdelta - deltaG
-      deltaM <- 60 * aux
-      aux2 <- deltaM - as.integer(deltaM)
-      deltaM <- as.integer(deltaM)
-      deltaS <- round(aux2 * 60, 0)
-      signo = -1
-    }
-
-    RA[i] = alfaG + alfaM/60 + alfaS/3600
-    Declinacion[i] = signo * (deltaG + deltaM/60 + deltaS/3600)
+    RA[i] = alfa
+    Declinacion[i] = delta
 
   }
 
