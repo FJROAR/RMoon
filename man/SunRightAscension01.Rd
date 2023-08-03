@@ -14,7 +14,7 @@ ecliptic}
 referred to the true equinox of the date}
 }
 \value{
-Right Ascensions of the Sun
+Vector of apparent Sun' right Ascensions
 }
 \description{
 Provides the Right Ascension of the Sun in the version low

@@ -11,7 +11,7 @@ SunBasicElements(juliancent)
 with sufficient number of decimals (recommended at least 9)}
 }
 \value{
-List of Theta (Sun's true longitude), Omega (Sun's true geometric longitude),
+List of vectors: Theta (Sun's true longitude), Omega (Sun's true geometric longitude),
 lambda (Sun's apparent longitude) and R (Sun's radiovector)
 }
 \description{

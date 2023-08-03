@@ -9,7 +9,7 @@
 #' referred to the true equinox of the date
 #'
 #'
-#' @return Right Ascensions of the Sun
+#' @return Vector of apparent Sun' right Ascensions
 #'
 #' @examples
 #'
@@ -27,13 +27,21 @@ SunRightAscension01 <- function(epsilon, lambda){
 
   k = pi / 180
 
-  alpha <- atan2(cos(k*epsilon) * sin(k*lambda), cos(k*lambda)) * (1/k)
+  alpha = numeric(length(lambda))
 
-  if (alpha < 0){
+  for (i in c(1: length(alpha))){
 
-    alpha = 360 + alpha
+    alpha[i] <- atan2(cos(k*epsilon[i]) * sin(k*lambda[i]), cos(k*lambda[i])) * (1/k)
+
+    if (alpha[i] < 0){
+
+      alpha[i] = 360 + alpha[i]
 
     }
+
+  }
+
+
 
 
   return(alpha)

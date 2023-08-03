@@ -6,7 +6,7 @@
 #' @param epsilon Numerical vector which represents the Obliquity of the Ecliptic
 #' @param lambda Numerical vector which represents the Sun's apparent longitude
 #'
-#' @return Apparent declination of the Sun
+#' @return Vector of apparent Sun' declinations
 #'
 #' @examples
 #'
@@ -24,7 +24,13 @@ SunDeclination01 <- function(epsilon, lambda){
 
   k = pi / 180
 
-  declination <- asin(sin(k*epsilon) * sin(k*lambda)) * (1/k)
+  declination = numeric(length(lambda))
+
+  for (i in c(1: length(declination))){
+
+    declination[i] <- asin(sin(k*epsilon[i]) * sin(k*lambda[i])) * (1/k)
+
+  }
 
   return(declination)
 

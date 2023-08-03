@@ -12,7 +12,7 @@ SunDeclination01(epsilon, lambda)
 \item{lambda}{Numerical vector which represents the Sun's apparent longitude}
 }
 \value{
-Apparent declination of the Sun
+Vector of apparent Sun' declinations
 }
 \description{
 Provides the Declination of the Sun in the version low
