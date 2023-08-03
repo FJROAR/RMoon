@@ -42,9 +42,8 @@ MoonIlluminated <- function(alpham, deltam, distm, alphas, deltas, dists){
       cos(deltas[i] * k) * cos(deltam[i] * k) * cos(alphas[i] * k - alpham[i] * k)
 
     psi = acos(cospsi)
-    psi = 180 * psi / pi
 
-    R = R[i] * 149597869.4016
+    R = dists[i] * 149597869.4016
 
     tanj = R * sin(psi) / (distm[i] - R * cos(psi))
     j = atan(tanj)
