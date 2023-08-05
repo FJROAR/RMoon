@@ -40,6 +40,8 @@ MoonBrightLimb <- function(alpham, deltam, alphas, deltas){
                 sin(deltas[i] * k) * cos(deltam[i] * k) -
                   cos(deltas[i] * k) * sin(deltam[i] * k) * cos(alphas[i] * k - alpham[i] * k))))
 
+    if (BrightLimb[i] > 2 * pi){BrightLimb[i] <- BrightLimb[i] - 2 * pi}
+
   }
 
   return (BrightLimb)
