@@ -43,10 +43,14 @@ MoonIlluminated <- function(alpham, deltam, distm, alphas, deltas, dists){
 
     psi = acos(cospsi)
 
+    #cosi = -cos(psi)
+    #j = acos(cosi)
+
     R = dists[i] * 149597869.4016
 
-    tanj = R * sin(psi) / (distm[i] - R * cos(psi))
+    tanj = (R * sin(psi) / (distm[i] - R * cos(psi)))
     j = atan(tanj)
+    if (j < 0){j = j + pi}
 
     Illuminated[i] = (1 + cos(j)) / 2
 
