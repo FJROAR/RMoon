@@ -22,8 +22,10 @@
 
 MoonPhasePrediction <- function(day, phase){
 
-  day = as.Date(c("1977-02-15", "2044-01-02"))
-  phase = c("new", "lastquarter")
+  day = as.Date(day)
+
+  juliano <- vector("numeric", length(day))
+  predDate <- vector("character", length(day))
 
   for (i in c(1, length(day))){
 
