@@ -27,9 +27,9 @@ MoonPhasePrediction <- function(day, phase){
 
   for (i in c(1, length(day))){
 
-    anio = as.numeric(substr(fec, 1, 4))
+    anio = as.numeric(substr(day, 1, 4))
     first_day <- as.Date(paste0(anio, "-01-01"))
-    past_days <- as.numeric(fec - first_day) + 1
+    past_days <- as.numeric(day - first_day) + 1
 
     if ((anio %% 4 == 0 && anio %% 100 != 0) || anio %% 400 == 0) {
 
