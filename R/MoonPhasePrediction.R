@@ -22,11 +22,8 @@
 
 MoonPhasePrediction <- function(day, phase){
 
-  day = c("1977-02-15", "2044-01-02")
+  day = as.Date(c("1977-02-15", "2044-01-02"))
   phase = c("new", "lastquarter")
-
-  juliano = vector("numeric", length(day))
-  predDate = vector("character", length(day))
 
   for (i in c(1, length(day))){
 
@@ -124,7 +121,7 @@ MoonPhasePrediction <- function(day, phase){
         0.00739 * E * sin(M_ - M) + 0.01039 * sin(2 * F_) + 0.01608 * sin(2*M_) +
         0.17241 * E * sin(M) + -0.40720 * sin(M_)
 
-    } else if ((phase[i] == "firstquarter") || (phase == "lastquarter")) {
+    } else if ((phase[i] == "firstquarter") || (phase[i] == "lastquarter")) {
 
       correction = -0.00002 * sin( 3 * M_ + M) +
         0.00002 * sin(M_ - M + 2 * F_) + 0.00002 * sin(2 * M_ - 2*F_) +
@@ -181,7 +178,8 @@ MoonPhasePrediction <- function(day, phase){
     juliano[i] <- JDE + correction + correction2
 
     base_1970 <- (juliano[i] - 2440587.5) * 24 * 3600
-    predDate[i] = as.POSIXct(as.numeric(base_1970), origin = "1970-01-01", tz = "UTC")
+    predDate[i] = as.character(as.POSIXct(as.numeric(base_1970),
+                                          origin = "1970-01-01", tz = "UTC"))
 
   }
 
