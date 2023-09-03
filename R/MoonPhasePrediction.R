@@ -22,14 +22,17 @@
 
 MoonPhasePrediction <- function(day, phase){
 
+  day = c("1977-02-15", "2044-01-02")
+  phase = c("new", "lastquarter")
+
   juliano = vector("numeric", length(day))
   predDate = vector("character", length(day))
 
   for (i in c(1, length(day))){
 
-    anio = as.numeric(substr(day, 1, 4))
+    anio = as.numeric(substr(day[i], 1, 4))
     first_day <- as.Date(paste0(anio, "-01-01"))
-    past_days <- as.numeric(day - first_day) + 1
+    past_days <- as.numeric(day[i] - first_day) + 1
 
     if ((anio %% 4 == 0 && anio %% 100 != 0) || anio %% 400 == 0) {
 
@@ -42,25 +45,25 @@ MoonPhasePrediction <- function(day, phase){
     }
 
 
-    if (phase == "new"){
+    if (phase[i] == "new"){
 
       k = round((anio + partyear - 2000) * 12.3685, 0)
 
     }
 
-    if (phase == "firstquarter"){
+    if (phase[i] == "firstquarter"){
 
       k = round((anio + partyear - 2000) * 12.3685, 0) + 0.25
 
     }
 
-    if (phase == "full"){
+    if (phase[i] == "full"){
 
       k = round((anio + partyear - 2000) * 12.3685, 0) + 0.5
 
     }
 
-    if (phase == "lastquarter"){
+    if (phase[i] == "lastquarter"){
 
       k = round((anio + partyear - 2000) * 12.3685, 0) + 0.75
 
@@ -109,7 +112,7 @@ MoonPhasePrediction <- function(day, phase){
     A14 <- ((331.55 + 3.592518 * k) %% 360 ) * pi / 180
 
 
-    if (phase == "new") {
+    if (phase[i] == "new") {
 
       correction = 0.00002 * sin(4 * M_) - 0.00002 * sin(3 * M_ + M) - 0.00002 * sin(M_ - M - 2 * F_) +
         0.00003 * sin(M_ - M + 2 * F_) - 0.00003 * sin(M_ + M + 2 * F_) +
@@ -121,7 +124,7 @@ MoonPhasePrediction <- function(day, phase){
         0.00739 * E * sin(M_ - M) + 0.01039 * sin(2 * F_) + 0.01608 * sin(2*M_) +
         0.17241 * E * sin(M) + -0.40720 * sin(M_)
 
-    } else if ((phase == "firstquarter") || (phase == "lastquarter")) {
+    } else if ((phase[i] == "firstquarter") || (phase == "lastquarter")) {
 
       correction = -0.00002 * sin( 3 * M_ + M) +
         0.00002 * sin(M_ - M + 2 * F_) + 0.00002 * sin(2 * M_ - 2*F_) +
@@ -142,7 +145,7 @@ MoonPhasePrediction <- function(day, phase){
         0.00002 * cos(M_ + M) +
         0.00002 * cos(2 * F_)
 
-      if (phase == "firstquarter"){
+      if (phase[i] == "firstquarter"){
         correction = correction + W
       }
 
@@ -152,7 +155,7 @@ MoonPhasePrediction <- function(day, phase){
       }
 
 
-    } else if (phase == "full") {
+    } else if (phase[i] == "full") {
 
       correction = 0.00002 * sin(4*M_) - 0.00002 * sin(3 * M_ + M) -
         0.00002 * sin(M_ - M - 2 * F_) + 0.00003 * sin(M_ - M + 2 * F_) -
