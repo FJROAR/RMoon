@@ -25,7 +25,7 @@ MoonPhasePrediction <- function(day, phase){
   juliano = vector("numeric", length(day))
   predDate = vector("character", length(day))
 
-  for (i in c(1, lenght(day))){
+  for (i in c(1, length(day))){
 
     anio = as.numeric(substr(fec, 1, 4))
     first_day <- as.Date(paste0(anio, "-01-01"))
