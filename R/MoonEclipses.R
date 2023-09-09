@@ -21,7 +21,7 @@
 #'
 #' library(RMoon)
 #'
-#' time_of_phase <- MoonEclipses("1977-02-15")
+#' MoonEclipseElements <- MoonEclipses("1977-02-15")
 #'
 #' @references
 #' Jean Meeus (1991), Astronomical Algorithms, ISBN 0-943396-35-2
@@ -60,7 +60,7 @@ MoonEclipses <- function(day){
     }
 
     #Full moon determination
-    k = round((anio + partyear - 2000) * 12.3685, 0) + 0.5
+    k = floor((anio + partyear - 2000) * 12.3685) + 0.5
 
     Tcent = k / 1236.85
 

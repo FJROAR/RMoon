@@ -23,7 +23,7 @@ last quarter, according to Chapter 49 of Astronomical Algorithms
 
 library(RMoon)
 
-time_of_phase <- MoonPhasePrediction("1977-02-15", "new")
+MoonPhase <- MoonPhasePrediction("1977-02-15", "new")
 
 }
 \references{

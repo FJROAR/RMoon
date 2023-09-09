@@ -30,7 +30,7 @@ a full moon phase to Chapter 54 of Astronomical Algorithms
 
 library(RMoon)
 
-time_of_phase <- MoonEclipses("1977-02-15")
+MoonEclipseElements <- MoonEclipses("1977-02-15")
 
 }
 \references{

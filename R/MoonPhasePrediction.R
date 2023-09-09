@@ -13,7 +13,7 @@
 #'
 #' library(RMoon)
 #'
-#' time_of_phase <- MoonPhasePrediction("1977-02-15", "new")
+#' MoonPhase <- MoonPhasePrediction("1977-02-15", "new")
 #'
 #' @references
 #' Jean Meeus (1991), Astronomical Algorithms, ISBN 0-943396-35-2
@@ -46,25 +46,25 @@ MoonPhasePrediction <- function(day, phase){
 
     if (phase[i] == "new"){
 
-      k = round((anio + partyear - 2000) * 12.3685, 0)
+      k = floor((anio + partyear - 2000) * 12.3685)
 
     }
 
     if (phase[i] == "firstquarter"){
 
-      k = round((anio + partyear - 2000) * 12.3685, 0) + 0.25
+      k = floor((anio + partyear - 2000) * 12.3685) + 0.25
 
     }
 
     if (phase[i] == "full"){
 
-      k = round((anio + partyear - 2000) * 12.3685, 0) + 0.5
+      k = floor((anio + partyear - 2000) * 12.3685) + 0.5
 
     }
 
     if (phase[i] == "lastquarter"){
 
-      k = round((anio + partyear - 2000) * 12.3685, 0) + 0.75
+      k = floor((anio + partyear - 2000) * 12.3685) + 0.75
 
     }
 
