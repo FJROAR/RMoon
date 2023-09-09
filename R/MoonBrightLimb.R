@@ -32,7 +32,7 @@ MoonBrightLimb <- function(alpham, deltam, alphas, deltas){
 
   BrightLimb = numeric(length(alpham))
 
-  for (i in c(1, length(BrightLimb))){
+  for (i in c(1: length(BrightLimb))){
 
     BrightLimb[i] <- (1 / k) *
       (2 * pi +

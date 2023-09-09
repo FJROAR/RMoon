@@ -36,7 +36,7 @@ MoonIlluminated <- function(alpham, deltam, distm, alphas, deltas, dists){
 
   Illuminated = numeric(length(alpham))
 
-  for (i in c(1, length(Illuminated))){
+  for (i in c(1: length(Illuminated))){
 
     cospsi = sin(deltas[i] * k) * sin(deltam[i] * k) +
       cos(deltas[i] * k) * cos(deltam[i] * k) * cos(alphas[i] * k - alpham[i] * k)

@@ -27,7 +27,7 @@ MoonPhasePrediction <- function(day, phase){
   juliano <- vector("numeric", length(day))
   predDate <- vector("character", length(day))
 
-  for (i in c(1, length(day))){
+  for (i in c(1: length(day))){
 
     anio = as.numeric(substr(day[i], 1, 4))
     first_day <- as.Date(paste0(anio, "-01-01"))
@@ -75,6 +75,26 @@ MoonPhasePrediction <- function(day, phase){
       0.00015437 * Tcent^2 -
       0.000000150 * Tcent^3 +
       0.00000000073 * Tcent^4
+
+    ref <-JulianDay(anio,
+                    as.numeric(substr(day[i], 6, 7)),
+                    as.numeric(substr(day[i], 9, 10)),
+                    0,0,0)[[2]]
+
+    if(JDE < ref){
+
+      k = k + 1;
+
+      Tcent = k / 1236.85
+
+      JDE <- 2451550.09766 +
+        29.530588861 * k +
+        0.00015437 * Tcent^2 -
+        0.000000150 * Tcent^3 +
+        0.00000000073 * Tcent^4
+
+    }
+
 
     E <- 1 - 0.002516 * Tcent - 0.0000074 * Tcent^2
     M <- ((2.5534 + 29.10535670 * k -
