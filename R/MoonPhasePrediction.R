@@ -163,7 +163,7 @@ MoonPhasePrediction <- function(day, phase){
         0.00007 * sin(M_ + 2 * M) - 0.00017 * sin(Om) -0.00024 * E * sin(2 * M_ - M) +
         0.00038 * E * sin(M - 2 * F_) + 0.00042 * E * sin(M + 2 * F_) - 0.00042 * sin(3*M_) +
         0.00056 * E * sin(2 * M_ + M) -0.00057 * sin(M_ + 2 * F_) -
-        0.00111 * sin(Mp - 2 * F_) + 0.00209* E * E * sin(2 * M) -
+        0.00111 * sin(M_ - 2 * F_) + 0.00209* E * E * sin(2 * M) -
         0.00514 * E * sin(M_ + M) + 0.00734 * E * sin(M_ - M) + 0.01043 * sin(2 * F_) +
         0.01614 * sin(2 * M_) + 0.17302 * E * sin(M) - 0.40614 * sin(M_);
     }
