@@ -17,13 +17,13 @@ List of vector of julian days and dates at UTC
 }
 \description{
 Prediction of the principal Moon's phases: new, full, first quarter,
-last quarter, according to Chapter 45 of Astronomical Algorithms
+last quarter, according to Chapter 49 of Astronomical Algorithms
 }
 \examples{
 
 library(RMoon)
 
-time_of_phase <- MoonPhase("1977-02-15", "new")
+time_of_phase <- MoonPhasePrediction("1977-02-15", "new")
 
 }
 \references{

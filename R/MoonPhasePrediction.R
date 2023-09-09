@@ -1,7 +1,7 @@
 #' @title MoonPhasePrediction
 #'
 #' @description Prediction of the principal Moon's phases: new, full, first quarter,
-#' last quarter, according to Chapter 45 of Astronomical Algorithms
+#' last quarter, according to Chapter 49 of Astronomical Algorithms
 #'
 #' @param day Date in format: "yyyy-mm-dd"
 #' @param phase Choice of the Moon's phase you have to choose between: "new",
@@ -13,7 +13,7 @@
 #'
 #' library(RMoon)
 #'
-#' time_of_phase <- MoonPhase("1977-02-15", "new")
+#' time_of_phase <- MoonPhasePrediction("1977-02-15", "new")
 #'
 #' @references
 #' Jean Meeus (1991), Astronomical Algorithms, ISBN 0-943396-35-2
