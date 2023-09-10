@@ -12,8 +12,10 @@ MoonEclipses(day)
 \value{
 List of vector of: juliano or Julian day of the following full moon and
 when the eclipse would happen, predDate or the date at format yyyy-mm-dd hh-mm -ss
-gamma or distance from the centre of the Moon to the axis of the Earth'shadow
-in units of the Earth's equatorial raidius, umbraMagn or magnitud of the umbra (if
+isEclipse or Moon's eclipse condition, nearNode or closest node where the eclipse takes
+place, gamma or least distance from the centre of the Moon to the axis of the Earth'shadow
+in units of the Earth's equatorial raidius, rho o penumbra radius (if this has sense),
+sigma or umbra radius (if this has sense), umbraMagn or magnitud of the umbra (if
 this value is negative not eclipse at umbra happen), penumbraMag or magnitud of the
 penumbra, semiDurationPartialumbra or duration in minutes of partial eclipse at
 the umbra phase if this phase happens, semiDurationTotalalumbra or duration in minutes of the
@@ -23,8 +25,8 @@ in minutes of the penumbra phase if this phase happens.
 Semiduration offers non-valid or NaN values if eclipse in umbra - penumbra does not happen
 }
 \description{
-Determination of the posibility of a Moon eclipse when happen
-a full moon phase to Chapter 54 of Astronomical Algorithms
+Determination of the posibility of a Moon Eclipse when happen
+a full moon phase according to Chapter 54 of Astronomical Algorithms
 }
 \examples{
 

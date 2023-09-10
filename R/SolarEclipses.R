@@ -1,36 +1,35 @@
-#' @title MoonEcplipses
+#' @title SolarEclipses
 #'
-#' @description Determination of the posibility of a Moon Eclipse when happen
+#' @description Determination of the posibility of a Solar Eclipse when happen
 #' a full moon phase according to Chapter 54 of Astronomical Algorithms
 #'
 #' @param day Date in format: "yyyy-mm-dd"
 #'
-#' @return List of vector of: juliano or Julian day of the following full moon and
+#' @return List of 15 vectors: juliano or Julian day of the following full moon and
 #' when the eclipse would happen, predDate or the date at format yyyy-mm-dd hh-mm -ss
-#' isEclipse or Moon's eclipse condition, nearNode or closest node where the eclipse takes
-#' place, gamma or least distance from the centre of the Moon to the axis of the Earth'shadow
-#' in units of the Earth's equatorial raidius, rho o penumbra radius (if this has sense),
-#' sigma or umbra radius (if this has sense), umbraMagn or magnitud of the umbra (if
-#' this value is negative not eclipse at umbra happen), penumbraMag or magnitud of the
-#' penumbra, semiDurationPartialumbra or duration in minutes of partial eclipse at
-#' the umbra phase if this phase happens, semiDurationTotalalumbra or duration in minutes of the
-#' total umbra phase if this phase happens and semiDurationPartialpenumbra or duration
-#' in minutes of the penumbra phase if this phase happens.
+#' gamma or the least distance from the axis of the Moon's shadow to the center of
+#' the Earth in units of equatorial radius of the Earth, u or radius of the Moon's
+#' umbral cone in units of the Earth's equatorial radius, radPenumbralCone or radius of
+#' the penumbral cone, isVisible or visibility condition, isCentral or centrality condition,
+#' isPartial or high likely of partiallity condition, isAnnularNoCentral or annular condition
+#' when a eclipse is no central, isCentralTotal or central + total condition, isCentralAnnular
+#' or central + annular condition and isAnnularTotal or annular + total condition, magnPartial or
+#' greatest magnitude in case of a partial solar eclipse
 #'
-#' Semiduration offers non-valid or NaN values if eclipse in umbra - penumbra does not happen
+#'
 #'
 #' @examples
 #'
 #' library(RMoon)
 #'
-#' MoonEclipseElements <- MoonEclipses("1977-02-15")
+#' SolarEclipseElements <- SolarEclipses("1977-02-15")
 #'
 #' @references
 #' Jean Meeus (1991), Astronomical Algorithms, ISBN 0-943396-35-2
 #'
 #' @export
 
-MoonEclipses <- function(day){
+SolarEclipses <- function(day){
 
   day = as.Date(day)
 
@@ -38,16 +37,21 @@ MoonEclipses <- function(day){
   predDate <- vector("character", length(day))
   isEclipse <- vector("character", length(day))
   nearNode <- vector("character", length(day))
+
   gamma <- vector("numeric", length(day))
   u <- vector("numeric", length(day))
-  rho <- vector("numeric", length(day))
-  sigma <- vector("numeric", length(day))
-  umbraMagn <- vector("numeric", length(day))
-  penumbraMagn <- vector("numeric", length(day))
-  semiDurationPartialumbra <- vector("numeric", length(day))
-  semiDurationTotalumbra <- vector("numeric", length(day))
-  semiDurationPartialpenumbra <- vector("numeric", length(day))
 
+  radPenumbralCone <- vector("numeric", length(day))
+  isVisible <- vector("character", length(day))
+  isCentral <- vector("character", length(day))
+  isPartial <- vector("character", length(day))
+  isAnnularNoCentral <- vector("character", length(day))
+
+  isCentralTotal <- vector("character", length(day))
+  isCentralAnnular <- vector("character", length(day))
+  isAnnularTotal <- vector("character", length(day))
+
+  magnPartial <- vector("numeric", length(day))
 
   for (i in c(1: length(day))){
 
@@ -65,8 +69,8 @@ MoonEclipses <- function(day){
 
     }
 
-    #Full moon determination
-    k = floor((anio + partyear - 2000) * 12.3685) + 0.5
+    #New moon determination
+    k = floor((anio + partyear - 2000) * 12.3685)
 
     Tcent = k / 1236.85
 
@@ -92,10 +96,7 @@ MoonEclipses <- function(day){
         0.00015437 * Tcent^2 -
         0.000000150 * Tcent^3 +
         0.00000000073 * Tcent^4
-
     }
-
-
 
     E <- 1 - 0.002516 * Tcent - 0.0000074 * Tcent^2
     M <- ((2.5534 + 29.10535670 * k -
@@ -115,6 +116,7 @@ MoonEclipses <- function(day){
     Om <- ((124.7746 - 1.56375588 * k +
               0.0020672 * Tcent^2 +
               0.00000215 * Tcent^3) %% 360 ) * pi / 180
+    F1 = (F_ * (180 / pi) - 0.02665 * sin(Om)) * pi / 180
 
     F2 <- F_ * 180 / pi
     Eclipse <- abs(F2 %% 180)
@@ -123,13 +125,14 @@ MoonEclipses <- function(day){
                              abs(Eclipse - 180) <= 21, "Indetermined", isEclipse[i])
 
     nearNode[i] <- ifelse((abs(F2 - 180) < abs(F2)) &
-                             (abs(F2 - 180) < abs(360 - F2)),
+                            (abs(F2 - 180) < abs(360 - F2)),
                           "Descending",
                           "Ascending")
-    F1 = (F_ * (180 / pi) - 0.02665 * sin(Om)) * pi / 180
+
+
     A1 = (299.77 + 0.107408 * k - 0.009173 * Tcent^2) * pi / 180
 
-    correction = -0.4065 * sin(M_) + 0.1727 * E * sin(M) +
+    correction = -0.4075 * sin(M_) + 0.1721 * E * sin(M) +
       0.0161 * sin(2*M_) - 0.0097 * sin(2*F1) + 0.0073 * E * sin(M_ - M) -
       0.0050 * E * sin(M_ + M) - 0.0023 * sin(M_ - 2 * F1) +
       0.0021 * E * sin(2 * M) + 0.0012 * sin(M_ + 2 * F1) +
@@ -162,31 +165,51 @@ MoonEclipses <- function(day){
     W = abs(cos(F1))
 
     gamma[i] = (P * cos(F1) + Q * sin(F1)) * (1 - 0.0048 * W)
-    u = 0.0059 + 0.0046 * E * cos(M) -
+    u[i] = 0.0059 + 0.0046 * E * cos(M) -
       0.0182 * cos(M_) + 0.0004 * cos(2 * M_) -
       0.0005 * cos(M + M_)
 
-    rho[i] = 1.2848 + u
-    sigma[i] = 0.7403 - u
+    radPenumbralCone[i] = u[i] + 0.5461
 
-    penumbraMagn[i] = (1.5573 + u - abs(gamma[i])) / 0.545
-    umbraMagn[i] = (1.0128 - u - abs(gamma[i])) / 0.545
+    isVisible[i] <- ifelse(abs(gamma[i]) > 1.5433 + u[i], "No visible", "Visible")
+    isCentral[i]  <- ifelse(abs(gamma[i]) <= 1.5433 + u[i] &
+                              abs(gamma[i]) > 0.9972, "No central", "Central")
 
-    #Duration at umbra
-    p = 1.0128 - u
-    t = 0.4678 - u
-    n = 0.5458 + 0.04 * cos(M_)
+    isPartial[i]  <- ifelse(abs(gamma[i]) > 0.9972 &
+                              abs(gamma[i]) <= 1.5433, "Likely Partial", "No partial")
 
-    semiDurationPartialumbra[i] = (60/n) * suppressWarnings({sqrt(p^2 - gamma[i]^2)})
-    semiDurationTotalumbra[i] = (60/n) * suppressWarnings({sqrt(t^2 - gamma[i]^2)})
+    isAnnularNoCentral[i]  <- ifelse(abs(gamma[i]) > 0.9972 &
+                                     abs(gamma[i]) <= 0.9972 + abs(u[i]), "Annular no central",
+                                   "No annular")
 
-    h = 1.5573 + u
-    semiDurationPartialpenumbra[i] = (60/n) * suppressWarnings({sqrt(h^2 - gamma[i]^2)})
+    isCentralTotal[i]  <- ifelse(isCentral[i] == "Central" &
+                                   u[i] < 0, "Central & total",
+                                 "It is no central & total")
+
+    isCentralAnnular[i]  <- ifelse(isCentral[i] == "Central" &
+                                   u[i] >= 0.0047,
+                                  "Central & annular",
+                                 "It is not central & annular")
+
+    omega <- 0.00464 * suppressWarnings(sqrt(1 - gamma[i]^2))
+    isAnnularTotal[i]  <- ifelse(isCentral[i] == "Central" &
+                                   u[i] >= 0 &
+                                   u[i] < omega,
+                                   "It is central & annular & total",
+                                 "It is no annular")
+    isAnnularTotal[i]  <- ifelse(isCentral[i] == "Central" &
+                                   u[i] >= omega &
+                                   u[i] < 0.0047,
+                                 "It is central & annular",
+                                 isAnnularTotal[i])
+
+    magnPartial[i] <- (1.5433 + u[i] - abs(gamma[i])) / (0.5461 + 2 * u[i])
+
   }
 
-  return(list(juliano, predDate, isEclipse, nearNode, gamma,
-              rho, sigma,
-              umbraMagn, penumbraMagn, semiDurationPartialumbra,
-              semiDurationTotalumbra, semiDurationPartialpenumbra))
+  return(list(juliano, predDate, isEclipse, nearNode, gamma, u, radPenumbralCone,
+              isVisible, isCentral, isPartial, isAnnularNoCentral,
+              isCentralTotal, isCentralAnnular, isAnnularTotal, magnPartial
+              ))
 
 }
