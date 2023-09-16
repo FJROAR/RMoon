@@ -180,7 +180,7 @@ SolarEclipses <- function(day){
 
     isAnnularNoCentral[i]  <- ifelse(abs(gamma[i]) > 0.9972 &
                                      abs(gamma[i]) <= 0.9972 + abs(u[i]), "Annular no central",
-                                   "No annular")
+                                   "It is no a non-central & annular")
 
     isCentralTotal[i]  <- ifelse(isCentral[i] == "Central" &
                                    u[i] < 0, "Central & total",
