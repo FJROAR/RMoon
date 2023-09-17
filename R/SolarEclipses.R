@@ -25,7 +25,7 @@
 #' SolarEclipseElements <- SolarEclipses("1977-02-15")
 #'
 #' @references
-#' Jean Meeus (1991), Astronomical Algorithms, ISBN 0-943396-35-2
+#' Jean Meeus (1998), Astronomical Algorithms, 2nd Ed, ISBN 0-943396-61-1
 #'
 #' @export
 
@@ -180,11 +180,11 @@ SolarEclipses <- function(day){
 
     isAnnularNoCentral[i]  <- ifelse(abs(gamma[i]) > 0.9972 &
                                      abs(gamma[i]) <= 0.9972 + abs(u[i]), "Annular no central",
-                                   "It is no a non-central & annular")
+                                   "It is not non-central & annular")
 
     isCentralTotal[i]  <- ifelse(isCentral[i] == "Central" &
                                    u[i] < 0, "Central & total",
-                                 "It is no central & total")
+                                 "It is not central & total")
 
     isCentralAnnular[i]  <- ifelse(isCentral[i] == "Central" &
                                    u[i] >= 0.0047,
@@ -196,7 +196,7 @@ SolarEclipses <- function(day){
                                    u[i] >= 0 &
                                    u[i] < omega,
                                    "It is central & annular & total",
-                                 "It is no annular")
+                                 "It is not annular")
     isAnnularTotal[i]  <- ifelse(isCentral[i] == "Central" &
                                    u[i] >= omega &
                                    u[i] < 0.0047,

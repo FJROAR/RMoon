@@ -11,12 +11,14 @@
 #' @param dists Distance Earth - Sun in AUs
 #'
 #' @return Vector of percentage of illuminated Moon's surface according to position of
-#' the Moon and Sun in a determinated date
+#' the Moon and Sun for a date
 #'
 #' @examples
 #'
 #' #alpham, deltam, distm, alphas, deltas, dists were computed at 12.04.1992, 00h 00m
+
 #' library(RMoon)
+
 #' MoonSurfaceIlluminated <- MoonIlluminated(alpham  = 134.6885,
 #'                                           deltam  = 13.7684,
 #'                                           distm = 368410,
@@ -25,7 +27,7 @@
 #'                                           dists = 1.0024977)
 #'
 #' @references
-#' Jean Meeus (1991), Astronomical Algorithms, ISBN 0-943396-35-2
+#' Jean Meeus (1998), Astronomical Algorithms, 2nd Ed, ISBN 0-943396-61-1
 #'
 #' @export
 

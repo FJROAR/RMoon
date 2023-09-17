@@ -1,7 +1,7 @@
 #' @title SunRightAscension01
 #'
 #' @description Provides the Right Ascension of the Sun in the version low
-#' accuracy according to Chapter 24 of Astronomical Algorithms
+#' accuracy according to Chapter 25 of Astronomical Algorithms
 #'
 #' @param epsilon Numerical vector which represents the obliquity of the
 #' ecliptic
@@ -18,7 +18,7 @@
 #' SuncoordAsc<- SunRightAscension01(epsilon = 23.440491532, lambda = 22.33957501)
 #'
 #' @references
-#' Jean Meeus (1991), Astronomical Algorithms, ISBN 0-943396-35-2
+#' Jean Meeus (1998), Astronomical Algorithms, 2nd Ed, ISBN 0-943396-61-1
 #'
 #' @export
 

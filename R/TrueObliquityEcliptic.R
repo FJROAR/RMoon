@@ -1,7 +1,7 @@
 #' @title TrueObliqutiyEcliptic
 #'
 #' @description Estimation of the obliquity of ecliptic according to
-#' Chapter 22 of Astronomical Algorithms (second edition)
+#' Chapter 22 of Astronomical Algorithms
 #'
 #' @param julianCent Numerical vector which represents a Julian converted in millenium
 #'
@@ -14,7 +14,7 @@
 #' TrueObliquity <- TrueObliqutiyEcliptic(juliancent = -0.077221081451)
 #'
 #' @references
-#' Jean Meeus (1991), Astronomical Algorithms, ISBN 0-943396-35-2
+#' Jean Meeus (1998), Astronomical Algorithms, 2nd Ed, ISBN 0-943396-61-1
 #'
 #' @export
 
