@@ -48,7 +48,7 @@ MoonNodes <- function(day, node){
 
     kincr = 0
 
-    if(node == "descending"){
+    if(node[i] == "descending"){
 
       kincr = 0.5
     }
