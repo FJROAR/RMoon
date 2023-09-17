@@ -28,7 +28,7 @@ Vector of geocentric latitudes
 }
 \description{
 Provides the Geocentric Latitude of the Moon
-according to Chapter 45 of Astronomical Algorithms
+according to Chapter 47 of Astronomical Algorithms
 }
 \examples{
 
@@ -45,5 +45,5 @@ GeoLat<- MoonGeoLat(L  = 134.29018627,
 
 }
 \references{
-Jean Meeus (1991), Astronomical Algorithms, ISBN 0-943396-35-2
+Jean Meeus (1998), Astronomical Algorithms, 2nd Ed, ISBN 0-943396-61-1
 }

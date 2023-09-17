@@ -20,7 +20,7 @@ adjustment)
 }
 \description{
 Provides some basic elements of the Moon position required in other
-functions for computing the Moon Position according to Chapter 45 of Astronomical Algorithms
+functions for computing the Moon Position according to Chapter 47 of Astronomical Algorithms
 }
 \examples{
 
@@ -29,5 +29,5 @@ Moonbasics <- MoonBasicElements(juliancent = -0.077221081451)
 
 }
 \references{
-Jean Meeus (1991), Astronomical Algorithms, ISBN 0-943396-35-2
+Jean Meeus (1998), Astronomical Algorithms, 2nd Ed, ISBN 0-943396-61-1
 }

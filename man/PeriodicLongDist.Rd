@@ -21,6 +21,6 @@ df = PeriodicLongDist
 
 }
 \references{
-Jean Meeus (1991), Astronomical Algorithms, ISBN 0-943396-35-2
+Jean Meeus (1998), Astronomical Algorithms, 2nd Ed, ISBN 0-943396-61-1
 }
 \keyword{dataset}

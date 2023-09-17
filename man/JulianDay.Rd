@@ -25,5 +25,5 @@ jlData<- JulianDay(year = 1992, month = 4, day = 12, hour = 0, minute = 0, secon
 
 }
 \references{
-Jean Meeus (1991), Astronomical Algorithms, ISBN 0-943396-35-2
+Jean Meeus (1998), Astronomical Algorithms, 2nd Ed, ISBN 0-943396-61-1
 }
