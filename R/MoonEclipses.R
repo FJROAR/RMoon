@@ -118,9 +118,12 @@ MoonEclipses <- function(day){
 
     F2 <- F_ * 180 / pi
     Eclipse <- abs(F2 %% 180)
-    isEclipse[i] <- ifelse(abs(Eclipse - 180) < 13.9, "Yes", "No")
-    isEclipse[i] <- ifelse(abs(Eclipse - 180) >= 13.9 &
-                             abs(Eclipse - 180) <= 21, "Indetermined", isEclipse[i])
+    isEclipse[i] <- ifelse(abs(Eclipse - 180) < 13.9 |
+                             abs(Eclipse - 0) < 13.9, "Yes", "No")
+    isEclipse[i] <- ifelse((abs(Eclipse - 180) >= 13.9 |
+                              abs(Eclipse - 0) < 13.9) &
+                             (abs(Eclipse - 180) <= 21 |
+                                abs(Eclipse - 0) <= 21), "Indetermined", isEclipse[i])
 
     nearNode[i] <- ifelse((abs(F2 - 180) < abs(F2)) &
                              (abs(F2 - 180) < abs(360 - F2)),
