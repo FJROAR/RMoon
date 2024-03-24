@@ -119,10 +119,13 @@ SolarEclipses <- function(day){
     F1 = (F_ * (180 / pi) - 0.02665 * sin(Om)) * pi / 180
 
     F2 <- F_ * 180 / pi
-    Eclipse <- abs(F2 %% 180)
-    isEclipse[i] <- ifelse(abs(Eclipse - 180) < 13.9, "Yes", "No")
-    isEclipse[i] <- ifelse(abs(Eclipse - 180) >= 13.9 &
-                             abs(Eclipse - 180) <= 21, "Indetermined", isEclipse[i])
+
+    Eclipse <- abs(F2 %% 360)
+    Eclipse <- min(abs(Eclipse - 0), abs(Eclipse - 180), abs(Eclipse - 360))
+
+    isEclipse <- ifelse(Eclipse < 13.9, "Yes", "No")
+    isEclipse <- ifelse((Eclipse >= 13.9 &
+                           Eclipse <= 21), "Indetermined", isEclipse)
 
     nearNode[i] <- ifelse((abs(F2 - 180) < abs(F2)) &
                             (abs(F2 - 180) < abs(360 - F2)),
