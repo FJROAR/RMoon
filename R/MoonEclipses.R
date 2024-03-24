@@ -121,7 +121,7 @@ MoonEclipses <- function(day){
     isEclipse[i] <- ifelse(abs(Eclipse - 180) < 13.9 |
                              abs(Eclipse - 0) < 13.9, "Yes", "No")
     isEclipse[i] <- ifelse((abs(Eclipse - 180) >= 13.9 |
-                              abs(Eclipse - 0) < 13.9) &
+                              abs(Eclipse - 0) >= 13.9) &
                              (abs(Eclipse - 180) <= 21 |
                                 abs(Eclipse - 0) <= 21), "Indetermined", isEclipse[i])
 
