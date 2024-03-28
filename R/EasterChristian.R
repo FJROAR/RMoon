@@ -12,7 +12,7 @@
 #'
 #' library(RMoon)
 #'
-#' Easter <- ChristianEaster(2024)
+#' Easter <- ChristianEaster(c(2024, 2023))
 #'
 #' @references
 #'  J.-M. Oudin (1940) Étude sur la date de Pâques, Bulletin Astronomique, 12, Paris

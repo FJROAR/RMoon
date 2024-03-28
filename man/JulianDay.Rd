@@ -11,8 +11,9 @@ JulianDay(year, month, day, hour, minute, second)
 reference of one or several days in UTM time}
 }
 \value{
-List of 3 vectors containing the following elements:
-the Julian time, the Julian day (epoch J2000.0), the Julian century and the Julian Millenium
+List of 4 vectors containing the following elements:
+(1) Julian time (2) Julian day (epoch J2000.0) (3) Julian century
+(4) Julian Millenium
 }
 \description{
 Provides the Julian Day using 5 parameter from year up to minutes

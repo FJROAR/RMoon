@@ -21,7 +21,7 @@ valid for any Gregorian year.
 
 library(RMoon)
 
-Easter <- ChristianEaster(2024)
+Easter <- ChristianEaster(c(2024, 2023))
 
 }
 \references{
