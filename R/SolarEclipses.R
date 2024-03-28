@@ -5,16 +5,17 @@
 #'
 #' @param day Date in format: "yyyy-mm-dd"
 #'
-#' @return List of 15 vectors: juliano or Julian day of the following full moon and
-#' when the eclipse would happen, predDate or the date at format yyyy-mm-dd hh-mm -ss
-#' gamma or the least distance from the axis of the Moon's shadow to the center of
-#' the Earth in units of equatorial radius of the Earth, u or radius of the Moon's
-#' umbral cone in units of the Earth's equatorial radius, radPenumbralCone or radius of
-#' the penumbral cone, isVisible or visibility condition, isCentral or centrality condition,
-#' isPartial or high likely of partiallity condition, isAnnularNoCentral or annular condition
-#' when a eclipse is no central, isCentralTotal or central + total condition, isCentralAnnular
-#' or central + annular condition and isAnnularTotal or annular + total condition, magnPartial or
-#' greatest magnitude in case of a partial solar eclipse
+#' @return List of 15 vectors: (1) juliano or Julian day of the following full moon and
+#' when the eclipse would happen (2) predDate or the date at format yyyy-mm-dd hh-mm -ss
+#'  (3) isEclipse if the Eclipse's condition is accomplished (4) nearNode or
+#' Node where the eclipse takes place (5) gamma or the least distance from the axis of the Moon's shadow to the center of
+#' the Earth in units of equatorial radius of the Earth (6) u or radius of the Moon's
+#' umbral cone in units of the Earth's equatorial radius (7) radPenumbralCone or radius of
+#' the penumbral cone (8) isVisible or visibility condition (9) isCentral or centrality condition
+#' (10) isPartial or high likely of partiallity condition (11) isAnnularNoCentral or annular condition
+#' when a eclipse is no central (12) isCentralTotal or central + total condition (13) isCentralAnnular
+#' or central + annular condition and (14) isAnnularTotal or annular + total condition
+#' (15) magnPartial or greatest magnitude in case of a partial solar eclipse
 #'
 #'
 #'

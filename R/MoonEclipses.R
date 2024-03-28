@@ -5,16 +5,16 @@
 #'
 #' @param day Date in format: "yyyy-mm-dd"
 #'
-#' @return List of vector of: juliano or Julian day of the following full moon and
-#' when the eclipse would happen, predDate or the date at format yyyy-mm-dd hh-mm -ss
-#' isEclipse or Moon's eclipse condition, nearNode or closest node where the eclipse takes
-#' place, gamma or least distance from the centre of the Moon to the axis of the Earth'shadow
-#' in units of the Earth's equatorial raidius, rho o penumbra radius (if this has sense),
-#' sigma or umbra radius (if this has sense), umbraMagn or magnitud of the umbra (if
-#' this value is negative not eclipse at umbra happen), penumbraMag or magnitud of the
-#' penumbra, semiDurationPartialumbra or duration in minutes of partial eclipse at
-#' the umbra phase if this phase happens, semiDurationTotalalumbra or duration in minutes of the
-#' total umbra phase if this phase happens and semiDurationPartialpenumbra or duration
+#' @return List of 12 vectors of: (1) juliano or Julian day of the following full moon and
+#' when the eclipse would happen (2) predDate or the date at format yyyy-mm-dd hh-mm -ss
+#'  (3) isEclipse or Moon's eclipse condition (4) nearNode or closest node where the eclipse takes
+#' place (5) gamma or least distance from the centre of the Moon to the axis of the Earth'shadow
+#' in units of the Earth's equatorial raidius (6) rho o penumbra radius (if this has sense),
+#'  (7) sigma or umbra radius (if this has sense) (8) umbraMagn or magnitud of the umbra (if
+#' this value is negative not eclipse at umbra happen) (9) penumbraMag or magnitud of the
+#' penumbra (10) semiDurationPartialumbra or duration in minutes of partial eclipse at
+#' the umbra phase if this phase happens (11) semiDurationTotalalumbra or duration in minutes of the
+#' total umbra phase if this phase happens (12) semiDurationPartialpenumbra or duration
 #' in minutes of the penumbra phase if this phase happens.
 #'
 #' Semiduration offers non-valid or NaN values if eclipse in umbra - penumbra does not happen
