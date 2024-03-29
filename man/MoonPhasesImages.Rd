@@ -7,17 +7,18 @@
 MoonPhasesImages(phase, download = F, path = "", size = 400)
 }
 \arguments{
+\item{phase}{Integer number between 1 - 58, two moon phases by day aprox}
+
 \item{download}{boolean value F or T}
 
 \item{path}{if download = T, it points where the file will be stored}
 
 \item{size}{by default = 400, it can be changed by the user}
-
-\item{phases}{Numerical vector from 1 to 58, two moon phases by day aprox}
 }
 \value{
-If download = F, the function return the image, if download = T the
-function downloads a image pointed by path
+If download = F, the function return the image itself but,
+if download = T the function downloads the selected image in a path pointed by
+the path parameter
 }
 \description{
 This allows to manage 58 images taken during a complete Lunar cicle

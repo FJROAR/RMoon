@@ -4,13 +4,16 @@
 #' taken between 11-03-2024 and 09-04-2024. For a 29.5 lunar cicle, these images shows,
 #' the moon with an interval of 12 hours
 #'
-#' @param phases Numerical vector from 1 to 58, two moon phases by day aprox
+#'
+#' @param phase Integer number between 1 - 58, two moon phases by day aprox
 #' @param download boolean value F or T
 #' @param path if download = T, it points where the file will be stored
 #' @param size by default = 400, it can be changed by the user
 #'
-#' @return If download = F, the function return the image, if download = T the
-#' function downloads a image pointed by path
+#'
+#' @return If download = F, the function return the image itself but,
+#' if download = T the function downloads the selected image in a path pointed by
+#' the path parameter
 #'
 #' @examples
 #'
