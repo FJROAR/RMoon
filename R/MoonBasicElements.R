@@ -2,6 +2,7 @@
 #'
 #' @description Provides some basic elements of the Moon position required in other
 #' functions for computing the Moon Position according to Chapter 47 of Astronomical Algorithms
+#' 2nd Edition
 #'
 #' @param juliancent Numerical vector which represents the Julian Day in centuries
 #' with sufficient number of decimals (recommended at least 9)
@@ -38,16 +39,16 @@ MoonBasicElements <- function(juliancent){
 
   for (i in c(1: length(juliancent))){
 
-    L[i] <- (218.3164591 +
-            481267.88134236 * juliancent[i] -
-            0.0013268 * juliancent[i]^2 +
+    L[i] <- (218.3164477 +
+            481267.88123421 * juliancent[i] -
+            0.0015786 * juliancent[i]^2 +
             juliancent[i]^3 / 538841 -
             juliancent[i]^4 / 65194000) %% 360
 
 
-    D[i] <- (297.8502042 +
-            445267.1115168 * juliancent[i] -
-            0.00163 * juliancent[i]^2 +
+    D[i] <- (297.8501921 +
+            445267.1114034 * juliancent[i] -
+            0.0018819 * juliancent[i]^2 +
             juliancent[i]^3 / 545868 -
             juliancent[i]^4 / 113065000) %% 360
 
@@ -56,15 +57,15 @@ MoonBasicElements <- function(juliancent){
             0.0001536 * juliancent[i]^2 +
             juliancent[i]^3 / 24490000) %% 360
 
-    M_[i] <- (134.9634114 +
-             477198.8676313 * juliancent[i] +
-             0.008997 * juliancent[i]^2 +
+    M_[i] <- (134.9633964 +
+             477198.8675055 * juliancent[i] +
+             0.0087414 * juliancent[i]^2 +
              juliancent[i]^3 / 69699 -
              juliancent[i]^4 / 14712000) %% 360
 
-    F_[i] <- (93.2720993 +
-             483202.0175273 * juliancent[i] -
-             0.0034029 * juliancent[i]^2 +
+    F_[i] <- (93.2720950 +
+             483202.0175233 * juliancent[i] -
+             0.0036539 * juliancent[i]^2 +
              juliancent[i]^3 / 3526000 -
              juliancent[i]^4 / 863310000) %% 360
 

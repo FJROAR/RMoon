@@ -1,7 +1,7 @@
 #' @title NutationLong
 #'
 #' @description Estimation of the longitude of nutation according to
-#' Chapter 22 of Astronomical Algorithms
+#' Chapter 22 of Astronomical Algorithms 2nd Edition
 #'
 #' @param julianCent Numerical vector which represents a Julian converted in millenium
 #'
@@ -36,7 +36,7 @@ NutationLong <- function(juliancent){
 
     M = 357.52772 + 35999.050340 * juliancent[i] -
       0.0001603 * juliancent[i]**2 -
-      juliancent[i] / 300000;
+      juliancent[i]**3 / 300000;
 
     M <- M %% 360
     if (M < 0) {M <- M + 360}
