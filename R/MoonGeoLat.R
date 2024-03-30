@@ -52,13 +52,13 @@ MoonGeoLat <- function(L, D, M, M_, F_, A1, A3, E){
 
   for (i in c(1:(length(L)))){
 
-    df$B_eccen <- ifelse(abs(df$M) == 1,
+    B_eccen <- ifelse(abs(df$M) == 1,
                        df$B_coeff * as.numeric(sprintf("%.9f",E[i])),
                        ifelse(abs(df$M) == 2,
                               df$B_coeff * as.numeric(sprintf("%.9f",E_2[i])),
                               df$B_coeff))
 
-    df$B_term <- df$B_coeff *
+    df$B_term <- B_eccen *
       as.numeric(sprintf("%.9f", sin(D[i] * df$D + M[i] * df$M + M_[i] * df$M_ + F_[i] * df$F)))
 
     total_B_term <- sum(df$B_term)

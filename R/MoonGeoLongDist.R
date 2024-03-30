@@ -55,22 +55,23 @@ MoonGeoLongDist <- function(L, D, M, M_, F_, A1, A2, E){
 
     df = PeriodicLongDist
 
-    L_eccen <- ifelse(abs(df$M) == 1,
-                      df$L_coeff * E[i],
-                      ifelse(abs(df$M) == 2,
-                             df$L_coeff* E[i] * E[i],
-                             df$L_coeff))
 
-    R_eccen <- ifelse(abs(df$M) == 1,
-                      df$R_coeff * E[i],
-                      ifelse(abs(df$M) == 2,
-                             df$R_coeff* E[i] * E[i],
-                             df$R_coeff))
+    R_eccen1  <- ifelse(abs(df$M) == 1,
+                     E[i] * df$L_coeff,
+                     ifelse(abs(df$M) == 2,
+                            E[i] * E[i] * df$L_coeff,
+                            df$L_coeff))
 
-    L_term <- df$L_coeff *
+    R_eccen2  <- ifelse(abs(df$M) == 1,
+                        E[i] * df$R_coeff,
+                        ifelse(abs(df$M) == 2,
+                               E[i] * E[i] * df$R_coeff,
+                               df$R_coeff))
+
+    L_term <- R_eccen1 *
       as.numeric(sprintf("%.9f", sin(D[i] * df$D + M[i] * df$M + M_[i] * df$M_ + F_[i] * df$F)))
 
-    R_term <- df$R_coeff *
+    R_term <- R_eccen2 *
       as.numeric(sprintf("%.9f", cos(D[i] * df$D + M[i] * df$M + M_[i] * df$M_ + F_[i] * df$F)))
 
     total_L_term <- sum(L_term)
