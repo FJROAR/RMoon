@@ -23,6 +23,8 @@
 TrueObliqutiyEcliptic <- function(juliancent){
 
   epsilon = numeric(length(juliancent))
+  varEpsilon = numeric(length(juliancent))
+  varPsi = numeric(length(juliancent))
 
   for (i in c(1: length(juliancent))){
 
@@ -39,7 +41,7 @@ TrueObliqutiyEcliptic <- function(juliancent){
       5.79/ 3600 * U**9 +
       2.45/ 3600 * U**10
 
-    #Nutation in Obliquity
+    #Nutation in Obliquity and latitude
 
     D <- 297.85036 +
       445267.111480 * juliancent[i] -
