@@ -14,7 +14,7 @@ Vector of varNutation (Nutation in longitude) in degrees, parameter needed for t
 }
 \description{
 Estimation of the longitude of nutation according to
-Chapter 22 of Astronomical Algorithms
+Chapter 22 of Astronomical Algorithms 2nd Edition
 }
 \examples{
 

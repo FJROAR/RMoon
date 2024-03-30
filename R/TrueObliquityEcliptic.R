@@ -5,7 +5,9 @@
 #'
 #' @param julianCent Numerical vector which represents a Julian converted in millenium
 #'
-#' @return Vector of epsilons (Obliquity of the Ecliptic) in degrees, parameter needed for the Sun's Declination and Right Ascension
+#' @return List of vectors: (1) True Obliquity of the Ecliptic in degrees which is
+#' needed for the Sun's Declination and Right Ascension (2) Nutation in obliquity
+#' (3) Nutation in longitude
 #'
 #' @examples
 #'
@@ -49,7 +51,7 @@ TrueObliqutiyEcliptic <- function(juliancent){
 
     M = 357.52772 + 35999.050340 * juliancent[i] -
       0.0001603 * juliancent[i]**2 -
-      juliancent[i] / 300000;
+      juliancent[i]**3 / 300000;
 
     M <- M %% 360
     if (M < 0) {M <- M + 360}
@@ -77,21 +79,26 @@ TrueObliqutiyEcliptic <- function(juliancent){
 
     df <- PeriodicNutObliq
 
-    df$ArgNutObliq <- pi * (df$D * D +
+    df$ArgNut <- pi * (df$D * D +
                               df$M * M +
                               df$M_ * Mprime +
                               df$F * F_ +
                               df$O * O) / 180
 
     df$NutObliq <- (df$Obl1 + df$Obl2 * juliancent[i]) *
-      0.0001 * cos(df$ArgNutObliq)
+      0.0001 * cos(df$ArgNut)
 
-    varEpsilon = sum(df$NutObliq)
+    df$NutLat <- (df$Nut1 + df$Nut2 * juliancent[i]) *
+      0.0001 * sin(df$ArgNut)
 
-    epsilon[i] <- (epsilon0 * 3600 + varEpsilon) / 3600
+    varEpsilon[i] = sum(df$NutObliq)
+
+    varPsi[i] = sum(df$NutLat)
+
+    epsilon[i] <- (epsilon0 * 3600 + varEpsilon[i]) / 3600
 
   }
 
+  return(list(epsilon, varEpsilon, varPsi))
 
-  return(epsilon)
-}
+  }

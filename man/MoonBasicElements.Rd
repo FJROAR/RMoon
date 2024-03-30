@@ -21,6 +21,7 @@ adjustment)
 \description{
 Provides some basic elements of the Moon position required in other
 functions for computing the Moon Position according to Chapter 47 of Astronomical Algorithms
+2nd Edition
 }
 \examples{
 
