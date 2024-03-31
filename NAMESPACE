@@ -3,7 +3,7 @@
 export(ChristianEaster)
 export(Ecliptic2Equatorial)
 export(Equatorial2Horizontal)
-export(JulianDay)
+export(JulianDayMeeus)
 export(MoonBasicElements)
 export(MoonBrightLimb)
 export(MoonEclipses)
