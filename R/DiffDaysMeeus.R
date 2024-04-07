@@ -1,4 +1,4 @@
-#' @title diffDatesMeeus
+#' @title DiffDaysMeeus
 #'
 #' @description This function computes the difference in Julian days, with decimals,
 #' between 2 dates taking into account the restriction of the function
@@ -7,10 +7,10 @@
 #' 1582-10-15.
 #'
 #' @param Mdate1,Mdate2  Numerical matrix which need 6 columns (years, months,
-#' days, hours, minutes, seconds) and the same number of rows to make the comparison
+#' days, hours, minutes, seconds) and the same number of rows to make the comparison.
 #'
 #' @return A numeric vector giving a difference of days between each row of M1 and
-#' M2 with decimals
+#' M2 with decimals.
 #'
 #' @examples
 #'
@@ -25,7 +25,7 @@
 #' Mdate2[1, ] <- c(1582, 10, 15, 0, 0, 0)
 #' Mdate2[2, ] <- c(2024, 4, 7, 0, 0, 0)
 #'
-#' dif_days <- DiffdaysMeeus(Mdate1, Mdate2)
+#' dif_days <- DiffDaysMeeus(Mdate1, Mdate2)
 #'
 #' @references
 #' Jean Meeus (1998), Astronomical Algorithms, 2nd Ed, ISBN 0-943396-61-1
@@ -33,7 +33,7 @@
 #' @export
 
 
-DiffdaysMeeus <- function(Mdate1,
+DiffDaysMeeus <- function(Mdate1,
                           Mdate2){
 
   M1 <- Mdate1
