@@ -3,8 +3,9 @@
 #' @description Provides the Julian Day using 5 parameter from year up to minutes
 #' (seconds can be considered using decimal in the last parameter). This function has
 #' been tested for BCE dates and takes into account dates previous to 05-10-1582 which
-#' are in Julian calendar. Note that this function gives a non-sense Julian day between
-#' 05-10-1582 and 14-10-1582 which where drop from the Gregorian calendar.
+#' are in Julian calendar. Note that this function gives a non-sense day between
+#' 05-10-1582 and 14-10-1582 which where drop from the Gregorian calendar. Only if
+#' it is required 15-10-1582, 10 days must be rested to the result.
 #'
 #' @param year,month,day,hour,minute,seconds  Numerical vectors that take the temporal
 #' reference of one or several days in UTM time
