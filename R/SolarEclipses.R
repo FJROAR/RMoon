@@ -84,7 +84,7 @@ SolarEclipses <- function(day){
     ref <-JulianDayMeeus(anio,
                          as.numeric(substr(day[i], 6, 7)),
                          as.numeric(substr(day[i], 9, 10)),
-                         0,0,0)[[2]]
+                         0,0,0)[[1]]
 
     if(JDE < ref){
 
