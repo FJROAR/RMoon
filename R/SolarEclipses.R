@@ -81,10 +81,10 @@ SolarEclipses <- function(day){
       0.000000150 * Tcent^3 +
       0.00000000073 * Tcent^4
 
-    ref <-JulianDay(anio,
-                    as.numeric(substr(day[i], 6, 7)),
-                    as.numeric(substr(day[i], 9, 10)),
-                    0,0,0)[[2]]
+    ref <-JulianDayMeeus(anio,
+                         as.numeric(substr(day[i], 6, 7)),
+                         as.numeric(substr(day[i], 9, 10)),
+                         0,0,0)[[2]]
 
     if(JDE < ref){
 
