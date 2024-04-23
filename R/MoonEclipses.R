@@ -9,12 +9,13 @@
 #' when the eclipse would happen (2) predDate or the date at format yyyy-mm-dd hh-mm -ss
 #'  (3) isEclipse or Moon's eclipse condition (4) nearNode or closest node where the eclipse takes
 #' place (5) gamma or least distance from the centre of the Moon to the axis of the Earth'shadow
-#' in units of the Earth's equatorial raidius (6) rho o penumbra radius (if this has sense),
-#'  (7) sigma or umbra radius (if this has sense) (8) umbraMagn or magnitud of the umbra (if
-#' this value is negative not eclipse at umbra happen) (9) penumbraMag or magnitud of the
-#' penumbra (10) semiDurationPartialumbra or duration in minutes of partial eclipse at
-#' the umbra phase if this phase happens (11) semiDurationTotalalumbra or duration in minutes of the
-#' total umbra phase if this phase happens (12) semiDurationPartialpenumbra or duration
+#' in units of the Earth's equatorial raidius (6) u radius of the Moon's umbra cone
+#' (7) rho o penumbra radius (if this has sense),
+#'  (8) sigma or umbra radius (if this has sense) (9) umbraMagn or magnitud of the umbra (if
+#' this value is negative not eclipse at umbra happen) (10) penumbraMag or magnitud of the
+#' penumbra (11) semiDurationPartialumbra or duration in minutes of partial eclipse at
+#' the umbra phase if this phase happens (12) semiDurationTotalalumbra or duration in minutes of the
+#' total umbra phase if this phase happens (13) semiDurationPartialpenumbra or duration
 #' in minutes of the penumbra phase if this phase happens.
 #'
 #' Semiduration offers non-valid or NaN values if eclipse in umbra - penumbra does not happen
@@ -164,7 +165,7 @@ MoonEclipses <- function(day){
     W = abs(cos(F1))
 
     gamma[i] = (P * cos(F1) + Q * sin(F1)) * (1 - 0.0048 * W)
-    u = 0.0059 + 0.0046 * E * cos(M) -
+    u[i] = 0.0059 + 0.0046 * E * cos(M) -
       0.0182 * cos(M_) + 0.0004 * cos(2 * M_) -
       0.0005 * cos(M + M_)
 
@@ -186,7 +187,7 @@ MoonEclipses <- function(day){
     semiDurationPartialpenumbra[i] = (60/n) * suppressWarnings({sqrt(h^2 - gamma[i]^2)})
   }
 
-  return(list(juliano, predDate, isEclipse, nearNode, gamma,
+  return(list(juliano, predDate, isEclipse, nearNode, gamma, u,
               rho, sigma,
               umbraMagn, penumbraMagn, semiDurationPartialumbra,
               semiDurationTotalumbra, semiDurationPartialpenumbra))
