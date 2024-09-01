@@ -27,7 +27,7 @@
 
 Equatorial2Horizontal <- function(LocalHourAngleT, DeclinationT, LatitudeT){
 
-  LocalHourAngleR <- 15 * LocalHourAngleT * 3.141592654 / 180
+  LocalHourAngleR <- LocalHourAngleT * 3.141592654 / 180
   DeclinationR <- DeclinationT * 3.141592654 / 180
   LatitudeR <- LatitudeT * 3.141592654 / 180
 
@@ -43,7 +43,7 @@ Equatorial2Horizontal <- function(LocalHourAngleT, DeclinationT, LatitudeT){
 
   Height = asin(sin(LatitudeR) * sin(DeclinationR) +
                   cos(LatitudeR) * cos(DeclinationR) * cos(LocalHourAngleR))
-  Height = 180 * Azimuth / 3141592654
+  Height = 180 * Azimuth / 3.141592654
 
   return(list(Azimuth, Height))
 
