@@ -27,6 +27,7 @@
 
 Equatorial2Horizontal <- function(LocalHourAngleT, DeclinationT, LatitudeT){
 
+
   LocalHourAngleR <- LocalHourAngleT * 3.141592654 / 180
   DeclinationR <- DeclinationT * 3.141592654 / 180
   LatitudeR <- LatitudeT * 3.141592654 / 180
@@ -36,8 +37,14 @@ Equatorial2Horizontal <- function(LocalHourAngleT, DeclinationT, LatitudeT){
   Azimuth = atan2(sin(LocalHourAngleR), cos(LocalHourAngleR) *
                     sin(LatitudeR) - tan(DeclinationR) * cos(LatitudeR))
 
+
   Azimuth = 180 * Azimuth / 3.141592654
   Azimuth <- ifelse(Azimuth < 0, Azimuth + 360, Azimuth)
+
+  #Ajuste a Stellarium
+  Azimuth <- 180 + Azimuth
+
+  if (Azimuth > 360) {Azimuth <- Azimuth -360}
 
   #Height
 
@@ -48,3 +55,4 @@ Equatorial2Horizontal <- function(LocalHourAngleT, DeclinationT, LatitudeT){
   return(list(Azimuth, Height))
 
 }
+
