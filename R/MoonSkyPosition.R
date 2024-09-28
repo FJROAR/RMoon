@@ -47,7 +47,7 @@ MoonSkyPosition <- function(year, month, day, hour, minute, second,
   #  Long = -3 + 37/60 + 40/3600
   #  Lat = 40 + 28/60 + 42/3600
 
-  #library(swephR)
+  library(swephR)
 
   n_dat = length(year)
 
