@@ -14,7 +14,8 @@ Depends:
 Imports:
     dplyr (>= 1.0.0),
     data.table (>= 1.0.0),
-    magick(>= 2.8.3)
+    magick (>= 2.8.3),
+	swephR (>= 2.10.03)
 Encoding: UTF-8
 Language: en-US
 LazyData: true
