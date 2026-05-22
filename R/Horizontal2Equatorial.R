@@ -37,13 +37,9 @@ Horizontal2Equatorial <- function(AzimuthT, HeightT, LatitudeT){
   # Declination
 
   Declination = asin(
-    sin(HeightR) * sin(LatitudeR) +
+    sin(HeightR) * sin(LatitudeR) -
       cos(HeightR) * cos(LatitudeR) * cos(AzimuthR)
   )
-
-  Declination = 180 * Declination / 3.141592654
-
-  DeclinationR <- Declination * 3.141592654 / 180
 
   # Local Hour Angle
 
@@ -53,11 +49,14 @@ Horizontal2Equatorial <- function(AzimuthT, HeightT, LatitudeT){
       tan(HeightR) * cos(LatitudeR)
   )
 
+  Declination = 180 * Declination / 3.141592654
   LocalHourAngle = 180 * LocalHourAngle / 3.141592654
 
-  LocalHourAngle <- ifelse(LocalHourAngle < 0,
-                           LocalHourAngle + 360,
-                           LocalHourAngle)
+  LocalHourAngle <- ifelse(
+    LocalHourAngle < 0,
+    LocalHourAngle + 360,
+    LocalHourAngle
+  )
 
   return(list(LocalHourAngle, Declination))
 
