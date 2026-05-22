@@ -25,7 +25,7 @@
 #'
 #' @export
 
-MoonSkyPosition <- function(year, month, day){
+MoonPeriApogeo <- function(year, month, day){
 
   #  year = c(1988, 2024, 2026)
   #  month = c(10, 9, 6)
