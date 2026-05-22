@@ -15,7 +15,7 @@
 #'
 #' library(RMoon)
 #' ecliptic <- Equatorial2Ecliptic(RA = 8.8932,
-#'                                 Dec = 19.1825,
+#'                                 Dec = 19.182,
 #'                                 eclipT = 23.440636)
 #'
 #' @references
@@ -24,37 +24,34 @@
 #' @export
 
 
-Equatorial2Ecliptic <- function(RA, Dec, eclipT){
+Ecliptic2Equatorial <- function(lambdaT, betaT, eclipT){
 
-  lambda = numeric(length(RA))
-  beta = numeric(length(RA))
+  RA = numeric(length(lambdaT))
+  Declinacion = numeric(length(lambdaT))
 
-  for (i in c(1:length(RA))) {
+  for (i in c(1:length(lambdaT))) {
 
-    alphaR <- RA[i] * 15 * pi / 180
-    deltaR <- Dec[i] * pi / 180
+    lambdaR <- lambdaT[i] * pi / 180
+    betaR <- betaT[i] * pi / 180
     eclipR <- eclipT[i] * pi / 180
 
-    a_lambda <- sin(alphaR) * cos(eclipR) + tan(deltaR) * sin(eclipR)
-    b_lambda <- cos(alphaR)
+    a_alfa <- sin(lambdaR) * cos(eclipR) - tan(betaR) * sin(eclipR)
+    b_alfa <- cos(lambdaR)
 
-    lambdaR <- atan(a_lambda / b_lambda)
+    tan_alfa = a_alfa / b_alfa
 
-    betaR <- asin(
-      sin(deltaR) * cos(eclipR) -
-        cos(deltaR) * sin(eclipR) * sin(alphaR)
-    )
+    a_delta <- sin(betaR) * cos(eclipR) + cos(betaR) * sin(eclipR) * sin(lambdaR)
 
-    lambdaDeg <- lambdaR * 180 / pi
-    betaDeg <- betaR * 180 / pi
+    delta <- asin(a_delta) * 180 / pi
 
-    if (lambdaDeg < 0) {
-      lambdaDeg <- lambdaDeg + 360
-    }
+    alfa <- atan2(a_alfa, b_alfa)
 
-    lambda[i] <- lambdaDeg
-    beta[i] <- betaDeg
+    alfa <- (alfa * (180 / pi)) / 15
+
+    RA[i] = alfa
+    Declinacion[i] = delta
+
   }
 
-  return(list(lambda, beta))
+  return(list(RA, Declinacion))
 }
