@@ -24,11 +24,11 @@ Conversion of Equatorial coordinates to Ecliptical
 \examples{
 
 library(RMoon)
-ecliptic <- Equatorial2Ecliptic(RA = 8.8932,
-                                Dec = 19.182,
+ecliptic <- Equatorial2Ecliptic(RA = 133.162655,
+                                Dec = -3.229126,
                                 eclipT = 23.440636)
 
 }
 \references{
-Jean Meeus (1998), Astronomical Algorithms, 2nd Ed, ISBN 0-943396-61-1
+Based on Jean Meeus (1998), Astronomical Algorithms, 2nd Ed, ISBN 0-943396-61-1
 }
