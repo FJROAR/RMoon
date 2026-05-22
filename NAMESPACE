@@ -3,6 +3,7 @@
 export(ChristianEaster)
 export(DiffDaysMeeus)
 export(Ecliptic2Equatorial)
+export(Equatorial2Ecliptic)
 export(Equatorial2Horizontal)
 export(GregoriantoMuslim)
 export(Horizontal2Equatorial)
