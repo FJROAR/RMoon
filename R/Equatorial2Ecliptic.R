@@ -48,6 +48,7 @@ Ecliptic2Equatorial <- function(lambdaT, betaT, eclipT){
 
     alfa <- (alfa * (180 / pi)) / 15
 
+
     RA[i] = alfa
     Declinacion[i] = delta
 
